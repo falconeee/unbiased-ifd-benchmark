@@ -1,0 +1,2244 @@
+{
+  "experiment_name": "resnet18_pu",
+  "experiment_name_template": "resnet18_pu_round_{round_idx}",
+  "dataset": "PU",
+  "suite": "multi_round",
+  "protocol": "multi_round",
+  "model": "ResNet18",
+  "description": "ResNet18 PU Multiround",
+  "description_template": "ResNet18 PU Multiround (Round {round_idx})",
+  "section": "1D ResNet18",
+  "status": "executed",
+  "source": {
+    "notebook": "multi_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 45,
+    "results_cell_index": null
+  },
+  "configuration": {
+    "batch_size": 128,
+    "lr": 0.0003,
+    "num_epochs": 25,
+    "pretrain_epochs": 0,
+    "output_dir": "results_multiround_ResNet18_PU/round_{round_idx}",
+    "data_fold_idxs": "current_folds",
+    "input_length": 64000,
+    "num_classes": 4
+  },
+  "results": {
+    "total_rounds_planned": 8,
+    "summary": {
+      "rounds_executed": 8,
+      "mean_accuracy": 0.6273,
+      "std_accuracy": 0.0308,
+      "mean_f1_score": 0.5788,
+      "std_f1_score": 0.0489
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.3653,
+            "f1_score": 0.3091,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6824,
+                  "val_loss": 3.5589,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.0948,
+                  "val_loss": 0.1084,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0329,
+                  "val_loss": 0.0653,
+                  "time_seconds": 15.77
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0196,
+                  "val_loss": 0.0153,
+                  "time_seconds": 15.8
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0129,
+                  "val_loss": 0.0046,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0081,
+                  "val_loss": 0.0042,
+                  "time_seconds": 15.72
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.9474,
+            "f1_score": 0.9507,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8121,
+                  "val_loss": 1.1088,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2284,
+                  "val_loss": 0.3602,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0796,
+                  "val_loss": 0.0664,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0949,
+                  "val_loss": 0.2981,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0378,
+                  "val_loss": 0.0351,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0329,
+                  "val_loss": 0.0219,
+                  "time_seconds": 15.68
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.7502,
+            "f1_score": 0.7849,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8306,
+                  "val_loss": 1.0543,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.222,
+                  "val_loss": 0.2107,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0914,
+                  "val_loss": 0.1331,
+                  "time_seconds": 15.77
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.06,
+                  "val_loss": 0.0981,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0821,
+                  "val_loss": 0.101,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0276,
+                  "val_loss": 0.3134,
+                  "time_seconds": 15.74
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.6502,
+            "f1_score": 0.6581,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8333,
+                  "val_loss": 1.8641,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.165,
+                  "val_loss": 0.0968,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.1075,
+                  "val_loss": 0.2539,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0904,
+                  "val_loss": 0.0929,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.064,
+                  "val_loss": 0.0412,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0404,
+                  "val_loss": 0.0357,
+                  "time_seconds": 15.68
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.6783,
+        "reported_accuracy": 0.6783,
+        "fold_accuracy_mean": 0.678275,
+        "fold_f1_mean": 0.6757
+      },
+      {
+        "round": 2,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.5454,
+            "f1_score": 0.4764,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7332,
+                  "val_loss": 1.1618,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1509,
+                  "val_loss": 0.1802,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0882,
+                  "val_loss": 0.0729,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.053,
+                  "val_loss": 0.1567,
+                  "time_seconds": 15.88
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0413,
+                  "val_loss": 0.0534,
+                  "time_seconds": 15.83
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0139,
+                  "val_loss": 0.0066,
+                  "time_seconds": 15.79
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.8715,
+            "f1_score": 0.9007,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8402,
+                  "val_loss": 1.1728,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2192,
+                  "val_loss": 0.2303,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.1107,
+                  "val_loss": 0.1384,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0519,
+                  "val_loss": 0.0411,
+                  "time_seconds": 15.84
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0247,
+                  "val_loss": 0.0455,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0344,
+                  "val_loss": 0.0238,
+                  "time_seconds": 15.71
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.75,
+            "f1_score": 0.642,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7162,
+                  "val_loss": 1.853,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1552,
+                  "val_loss": 0.1962,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0593,
+                  "val_loss": 0.1027,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0486,
+                  "val_loss": 0.0246,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0219,
+                  "val_loss": 0.024,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.036,
+                  "val_loss": 0.0242,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.4002,
+            "f1_score": 0.3827,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6759,
+                  "val_loss": 3.2174,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1222,
+                  "val_loss": 0.2133,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0585,
+                  "val_loss": 0.0457,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.057,
+                  "val_loss": 0.1527,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0303,
+                  "val_loss": 0.0278,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0308,
+                  "val_loss": 0.2274,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.6418,
+        "reported_accuracy": 0.6418,
+        "fold_accuracy_mean": 0.641775,
+        "fold_f1_mean": 0.60045
+      },
+      {
+        "round": 3,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.6253,
+            "f1_score": 0.607,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7991,
+                  "val_loss": 1.402,
+                  "time_seconds": 15.79
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2116,
+                  "val_loss": 0.2596,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0903,
+                  "val_loss": 0.1596,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0425,
+                  "val_loss": 0.0654,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0311,
+                  "val_loss": 0.0358,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0378,
+                  "val_loss": 0.0799,
+                  "time_seconds": 15.83
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.7558,
+            "f1_score": 0.7323,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7883,
+                  "val_loss": 1.3021,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2216,
+                  "val_loss": 0.1949,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.1133,
+                  "val_loss": 0.0571,
+                  "time_seconds": 15.67
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0654,
+                  "val_loss": 0.0447,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0401,
+                  "val_loss": 0.0934,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0492,
+                  "val_loss": 0.0492,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.3015,
+            "f1_score": 0.2472,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6331,
+                  "val_loss": 1.4193,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.08,
+                  "val_loss": 0.1213,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0425,
+                  "val_loss": 0.1854,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.018,
+                  "val_loss": 0.0277,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0104,
+                  "val_loss": 0.2306,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0099,
+                  "val_loss": 0.3976,
+                  "time_seconds": 15.71
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.5942,
+            "f1_score": 0.4692,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7128,
+                  "val_loss": 2.1994,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1084,
+                  "val_loss": 0.0843,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0746,
+                  "val_loss": 0.1133,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0467,
+                  "val_loss": 0.0352,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0546,
+                  "val_loss": 0.1889,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.034,
+                  "val_loss": 0.0279,
+                  "time_seconds": 15.75
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.5692,
+        "reported_accuracy": 0.5692,
+        "fold_accuracy_mean": 0.5692,
+        "fold_f1_mean": 0.513925
+      },
+      {
+        "round": 4,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.6042,
+            "f1_score": 0.5717,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7483,
+                  "val_loss": 2.2668,
+                  "time_seconds": 15.78
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2113,
+                  "val_loss": 0.1165,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0793,
+                  "val_loss": 0.0669,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0499,
+                  "val_loss": 0.0683,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.037,
+                  "val_loss": 0.0585,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0185,
+                  "val_loss": 0.0187,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.5596,
+            "f1_score": 0.4154,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.638,
+                  "val_loss": 1.4324,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1178,
+                  "val_loss": 0.1302,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0348,
+                  "val_loss": 0.0205,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0121,
+                  "val_loss": 0.0039,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.014,
+                  "val_loss": 0.0065,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0174,
+                  "val_loss": 0.003,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.4467,
+            "f1_score": 0.3626,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7007,
+                  "val_loss": 1.9418,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1312,
+                  "val_loss": 0.8764,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0586,
+                  "val_loss": 0.066,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0458,
+                  "val_loss": 0.0547,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0513,
+                  "val_loss": 0.0994,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0625,
+                  "val_loss": 0.0897,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.9627,
+            "f1_score": 0.9597,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8123,
+                  "val_loss": 1.3362,
+                  "time_seconds": 15.77
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.24,
+                  "val_loss": 0.2396,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0928,
+                  "val_loss": 0.074,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0799,
+                  "val_loss": 0.0987,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0391,
+                  "val_loss": 0.0397,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0223,
+                  "val_loss": 0.0328,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.6433,
+        "reported_accuracy": 0.6433,
+        "fold_accuracy_mean": 0.6433,
+        "fold_f1_mean": 0.57735
+      },
+      {
+        "round": 5,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.5802,
+            "f1_score": 0.557,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7397,
+                  "val_loss": 1.8448,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1676,
+                  "val_loss": 0.169,
+                  "time_seconds": 15.81
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0856,
+                  "val_loss": 0.0643,
+                  "time_seconds": 15.87
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0599,
+                  "val_loss": 0.0583,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0585,
+                  "val_loss": 0.0689,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0196,
+                  "val_loss": 0.0101,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.4782,
+            "f1_score": 0.2483,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6466,
+                  "val_loss": 1.5129,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.0729,
+                  "val_loss": 0.1733,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0476,
+                  "val_loss": 0.0315,
+                  "time_seconds": 15.82
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0133,
+                  "val_loss": 0.0385,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0032,
+                  "val_loss": 0.001,
+                  "time_seconds": 15.67
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0069,
+                  "val_loss": 0.0027,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.6841,
+            "f1_score": 0.6667,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8161,
+                  "val_loss": 2.2376,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2057,
+                  "val_loss": 0.2974,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0893,
+                  "val_loss": 0.1957,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0656,
+                  "val_loss": 0.0874,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.038,
+                  "val_loss": 0.0348,
+                  "time_seconds": 15.83
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0151,
+                  "val_loss": 0.4155,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.6349,
+            "f1_score": 0.5771,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7948,
+                  "val_loss": 1.1771,
+                  "time_seconds": 15.81
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1713,
+                  "val_loss": 0.341,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0732,
+                  "val_loss": 0.0444,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0424,
+                  "val_loss": 0.0354,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.065,
+                  "val_loss": 0.1789,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0301,
+                  "val_loss": 0.0473,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.5944,
+        "reported_accuracy": 0.5944,
+        "fold_accuracy_mean": 0.59435,
+        "fold_f1_mean": 0.512275
+      },
+      {
+        "round": 6,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.5656,
+            "f1_score": 0.5227,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7402,
+                  "val_loss": 1.3197,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1504,
+                  "val_loss": 0.1144,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0762,
+                  "val_loss": 0.1061,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0677,
+                  "val_loss": 0.1228,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0269,
+                  "val_loss": 0.0219,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0111,
+                  "val_loss": 0.012,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.6334,
+            "f1_score": 0.5074,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.7713,
+                  "val_loss": 1.7744,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1551,
+                  "val_loss": 0.241,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0591,
+                  "val_loss": 0.1127,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0607,
+                  "val_loss": 0.0545,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0614,
+                  "val_loss": 0.9039,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0122,
+                  "val_loss": 0.0159,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.4261,
+            "f1_score": 0.3487,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6734,
+                  "val_loss": 2.2763,
+                  "time_seconds": 15.76
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.106,
+                  "val_loss": 0.1143,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0449,
+                  "val_loss": 0.0612,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0262,
+                  "val_loss": 0.0518,
+                  "time_seconds": 15.77
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0441,
+                  "val_loss": 0.0957,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0066,
+                  "val_loss": 0.1962,
+                  "time_seconds": 15.75
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.8903,
+            "f1_score": 0.8787,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8079,
+                  "val_loss": 1.3165,
+                  "time_seconds": 15.75
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.221,
+                  "val_loss": 0.2026,
+                  "time_seconds": 15.86
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.1354,
+                  "val_loss": 0.4448,
+                  "time_seconds": 15.77
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0696,
+                  "val_loss": 0.1132,
+                  "time_seconds": 15.79
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0467,
+                  "val_loss": 0.0451,
+                  "time_seconds": 15.78
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.029,
+                  "val_loss": 0.0246,
+                  "time_seconds": 15.78
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.6288,
+        "reported_accuracy": 0.6288,
+        "fold_accuracy_mean": 0.62885,
+        "fold_f1_mean": 0.564375
+      },
+      {
+        "round": 7,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.3353,
+            "f1_score": 0.2643,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6332,
+                  "val_loss": 1.5105,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1163,
+                  "val_loss": 0.4004,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0328,
+                  "val_loss": 0.0236,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0341,
+                  "val_loss": 0.1243,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0083,
+                  "val_loss": 0.0084,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0034,
+                  "val_loss": 0.0031,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.3699,
+            "f1_score": 0.2668,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6959,
+                  "val_loss": 2.2013,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1207,
+                  "val_loss": 0.0865,
+                  "time_seconds": 15.67
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0948,
+                  "val_loss": 0.0467,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0444,
+                  "val_loss": 0.0364,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0346,
+                  "val_loss": 0.0577,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0271,
+                  "val_loss": 0.0419,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.9417,
+            "f1_score": 0.9442,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8236,
+                  "val_loss": 1.4705,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2424,
+                  "val_loss": 0.2689,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.1273,
+                  "val_loss": 0.0606,
+                  "time_seconds": 15.73
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0546,
+                  "val_loss": 0.1002,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0584,
+                  "val_loss": 0.3035,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0321,
+                  "val_loss": 0.0201,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.8863,
+            "f1_score": 0.899,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8405,
+                  "val_loss": 1.4503,
+                  "time_seconds": 15.74
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2525,
+                  "val_loss": 0.3845,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.1175,
+                  "val_loss": 0.179,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.051,
+                  "val_loss": 0.1352,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0533,
+                  "val_loss": 0.158,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0195,
+                  "val_loss": 0.0287,
+                  "time_seconds": 15.68
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.6333,
+        "reported_accuracy": 0.6333,
+        "fold_accuracy_mean": 0.6333,
+        "fold_f1_mean": 0.593575
+      },
+      {
+        "round": 8,
+        "total_rounds": 8,
+        "folds": [
+          {
+            "fold": 1,
+            "total_folds": 4,
+            "fold_index": 0,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.3004,
+            "f1_score": 0.1825,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.6738,
+                  "val_loss": 2.906,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1115,
+                  "val_loss": 0.0857,
+                  "time_seconds": 15.83
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.038,
+                  "val_loss": 0.0465,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0198,
+                  "val_loss": 0.0225,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0135,
+                  "val_loss": 0.0088,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0106,
+                  "val_loss": 0.0309,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 2,
+            "total_folds": 4,
+            "fold_index": 1,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.9532,
+            "f1_score": 0.9614,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8369,
+                  "val_loss": 1.6274,
+                  "time_seconds": 15.67
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1923,
+                  "val_loss": 0.1585,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0969,
+                  "val_loss": 0.0907,
+                  "time_seconds": 15.67
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0695,
+                  "val_loss": 0.0968,
+                  "time_seconds": 15.68
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0315,
+                  "val_loss": 0.0216,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0266,
+                  "val_loss": 0.0377,
+                  "time_seconds": 15.69
+                }
+              ]
+            }
+          },
+          {
+            "fold": 3,
+            "total_folds": 4,
+            "fold_index": 2,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.8256,
+            "f1_score": 0.812,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.8236,
+                  "val_loss": 1.1701,
+                  "time_seconds": 15.72
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.2362,
+                  "val_loss": 0.2338,
+                  "time_seconds": 15.78
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.0997,
+                  "val_loss": 0.1758,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.072,
+                  "val_loss": 0.0975,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0881,
+                  "val_loss": 0.3933,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0353,
+                  "val_loss": 0.0354,
+                  "time_seconds": 15.7
+                }
+              ]
+            }
+          },
+          {
+            "fold": 4,
+            "total_folds": 4,
+            "fold_index": 3,
+            "training_stage": "classifier",
+            "epochs_logged_for": 25,
+            "accuracy": 0.4379,
+            "f1_score": 0.4148,
+            "training_history": {
+              "supervised": [
+                {
+                  "epoch": 1,
+                  "total_epochs": 25,
+                  "train_loss": 0.767,
+                  "val_loss": 1.0526,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 5,
+                  "total_epochs": 25,
+                  "train_loss": 0.1847,
+                  "val_loss": 0.1473,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 10,
+                  "total_epochs": 25,
+                  "train_loss": 0.105,
+                  "val_loss": 0.0885,
+                  "time_seconds": 15.69
+                },
+                {
+                  "epoch": 15,
+                  "total_epochs": 25,
+                  "train_loss": 0.0462,
+                  "val_loss": 0.0789,
+                  "time_seconds": 15.7
+                },
+                {
+                  "epoch": 20,
+                  "total_epochs": 25,
+                  "train_loss": 0.0528,
+                  "val_loss": 0.0354,
+                  "time_seconds": 15.71
+                },
+                {
+                  "epoch": 25,
+                  "total_epochs": 25,
+                  "train_loss": 0.0565,
+                  "val_loss": 0.1251,
+                  "time_seconds": 15.72
+                }
+              ]
+            }
+          }
+        ],
+        "mean_accuracy": 0.6293,
+        "reported_accuracy": 0.6293,
+        "fold_accuracy_mean": 0.629275,
+        "fold_f1_mean": 0.592675
+      }
+    ]
+  },
+  "fold_design": {
+    "total_combinations": 8,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 3
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 6
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 3",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 3",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 13
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 0",
+              "I 1",
+              "R 0"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 15
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 1",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 19
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 20
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 23
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 3"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 31
+          }
+        ]
+      }
+    ]
+  }
+}

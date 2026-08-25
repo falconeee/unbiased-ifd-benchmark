@@ -1,0 +1,23 @@
+{
+  "experiment_name": "mlp1d_vibration_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "MLP1D",
+  "description": "1D MLP for vibration signals PU",
+  "section": "1D MLP adaptada",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 20,
+    "results_cell_index": 21
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 100,
+    "pretrain_epochs": 0,
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}

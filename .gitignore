@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Benchmark runner (scripts/run_experiments.py)
+# Raw downloads, converted DeepDatasets and group/fold caches -- gigabytes, all rebuildable.
+data/
+# Loss curves and model checkpoints written during a run.
+results/_artifacts/
+results/run.log

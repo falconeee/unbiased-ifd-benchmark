@@ -1,0 +1,26 @@
+{
+  "experiment_name": "ae1d_vibration_combined_loss_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "AE1D",
+  "description": "1D AE for vibration signals (Combined Loss) PU",
+  "section": "1D AutoEncoder",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 24,
+    "results_cell_index": 25
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 50,
+    "pretrain_epochs": 50,
+    "recon_loss_weight": 1.0,
+    "criterion": "classification_criterion",
+    "reconstruction_criterion": "reconstruction_criterion",
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}

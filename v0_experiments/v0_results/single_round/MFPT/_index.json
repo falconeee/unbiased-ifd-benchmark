@@ -1,0 +1,107 @@
+{
+  "dataset": "MFPT",
+  "suite": "single_round",
+  "source_notebook": "single_round_experiments/SignalAI_Framework_MFPT.ipynb",
+  "num_experiments": 9,
+  "experiments": [
+    {
+      "file": "mlp1d_vibration_mfpt.json",
+      "experiment_name": "mlp1d_vibration_mfpt",
+      "model": "MLP1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "ae1d_vibration_combined_loss_MFPT.json",
+      "experiment_name": "ae1d_vibration_combined_loss_MFPT",
+      "model": "AE1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "sae1d_vibration_sequential_MFPT.json",
+      "experiment_name": "sae1d_vibration_sequential_MFPT",
+      "model": "SAE1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "dae1d_vibration_sequential_mfpt.json",
+      "experiment_name": "dae1d_vibration_sequential_mfpt",
+      "model": "DAE1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "cnn1d_vibration_mfpt.json",
+      "experiment_name": "cnn1d_vibration_mfpt",
+      "model": "CNN1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.9286,
+      "std_accuracy": 0.0583,
+      "mean_f1_score": 0.9275,
+      "std_f1_score": 0.0595
+    },
+    {
+      "file": "1d_lenet_vibration_mfpt.json",
+      "experiment_name": "1d_lenet_vibration_mfpt",
+      "model": "LeNet1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.9286,
+      "std_accuracy": 0.0583,
+      "mean_f1_score": 0.9275,
+      "std_f1_score": 0.0595
+    },
+    {
+      "file": "resnet18_vibration_mfpt.json",
+      "experiment_name": "resnet18_vibration_mfpt",
+      "model": "ResNet18",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 1.0,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 1.0,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "alexNet_vibration_mfpt.json",
+      "experiment_name": "alexNet_vibration_mfpt",
+      "model": "AlexNet1D",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 0.9762,
+      "std_accuracy": 0.0337,
+      "mean_f1_score": 0.9761,
+      "std_f1_score": 0.0338
+    },
+    {
+      "file": "BiLSTM_vibration_mfpt.json",
+      "experiment_name": "BiLSTM_vibration_mfpt",
+      "model": "BiLSTM",
+      "protocol": "single_round",
+      "status": "executed",
+      "mean_accuracy": 1.0,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 1.0,
+      "std_f1_score": 0.0
+    }
+  ]
+}

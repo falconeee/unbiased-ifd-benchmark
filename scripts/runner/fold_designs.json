@@ -1,0 +1,1375 @@
+{
+  "CWRU12k": {
+    "total_combinations": 8,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 3
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 6
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 3",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 3",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 13
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 0",
+              "I 1",
+              "R 0"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 15
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 1",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 19
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 20
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 23
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 3"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 31
+          }
+        ]
+      }
+    ]
+  },
+  "CWRU48k": {
+    "total_combinations": 8,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 3
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 1",
+              "R 2"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 6
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 3",
+              "R 1"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 13
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 15
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 19
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 20
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 1",
+              "R 0"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 23
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 3",
+              "R 1"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 31
+          }
+        ]
+      }
+    ]
+  },
+  "MFPT": {
+    "total_combinations": 5,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C2"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C3"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C4"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C5"
+            ],
+            "combination_id": 3
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C6"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C7"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C8"
+            ],
+            "combination_id": 6
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C8"
+            ],
+            "combination_id": 7
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C4"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C7"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C2"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C5"
+            ],
+            "combination_id": 11
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C3"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C6"
+            ],
+            "combination_id": 13
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C6"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C5"
+            ],
+            "combination_id": 15
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C3"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C8"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C2"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C4"
+            ],
+            "combination_id": 19
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C7"
+            ],
+            "combination_id": 20
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C5"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C8"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C2"
+            ],
+            "combination_id": 23
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C3"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C7"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C6"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C4"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C4"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C6"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C5"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C7"
+            ],
+            "combination_id": 31
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C3"
+            ],
+            "combination_id": 32
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C8"
+            ],
+            "combination_id": 33
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C2"
+            ],
+            "combination_id": 34
+          }
+        ]
+      }
+    ]
+  },
+  "PU": {
+    "total_combinations": 8,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 3
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 6
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 3",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 3",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 13
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 0",
+              "I 1",
+              "R 0"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 15
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 1",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 19
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 20
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 23
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 3"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 31
+          }
+        ]
+      }
+    ]
+  }
+}

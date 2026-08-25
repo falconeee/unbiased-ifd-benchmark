@@ -1,0 +1,22 @@
+{
+  "experiment_name": "ResNet18_vibration_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "ResNet18",
+  "description": "ResNet18 for Raw Vibration (12k points) PU",
+  "section": "1D ResNet18",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 44,
+    "results_cell_index": 45
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 100,
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}

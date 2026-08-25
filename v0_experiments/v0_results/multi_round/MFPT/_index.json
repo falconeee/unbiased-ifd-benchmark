@@ -1,0 +1,417 @@
+{
+  "dataset": "MFPT",
+  "suite": "multi_round",
+  "source_notebook": "multi_round_experiments/SignalAI_Framework_MFPT.ipynb",
+  "num_experiments": 9,
+  "fold_design": {
+    "total_combinations": 5,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C2"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C3"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C4"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C5"
+            ],
+            "combination_id": 3
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C6"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C7"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C8"
+            ],
+            "combination_id": 6
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C8"
+            ],
+            "combination_id": 7
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C4"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C7"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C2"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C5"
+            ],
+            "combination_id": 11
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C3"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C6"
+            ],
+            "combination_id": 13
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C6"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C5"
+            ],
+            "combination_id": 15
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C3"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C8"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C2"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C4"
+            ],
+            "combination_id": 19
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C7"
+            ],
+            "combination_id": 20
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C5"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C8"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C2"
+            ],
+            "combination_id": 23
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C3"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C7"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C6"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C4"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "I C1",
+              "O C4"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "I C3",
+              "O C6"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "I C4",
+              "O C5"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "I C5",
+              "O C7"
+            ],
+            "combination_id": 31
+          },
+          {
+            "fold": 4,
+            "groups": [
+              "I C6",
+              "O C3"
+            ],
+            "combination_id": 32
+          },
+          {
+            "fold": 5,
+            "groups": [
+              "I C7",
+              "O C8"
+            ],
+            "combination_id": 33
+          },
+          {
+            "fold": 6,
+            "groups": [
+              "I C8",
+              "O C2"
+            ],
+            "combination_id": 34
+          }
+        ]
+      }
+    ]
+  },
+  "experiments": [
+    {
+      "file": "mlp1d_mfpt.json",
+      "experiment_name": "mlp1d_mfpt",
+      "model": "MLP1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "ae1d_mfpt.json",
+      "experiment_name": "ae1d_mfpt",
+      "model": "AE1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "sae1d_mfpt.json",
+      "experiment_name": "sae1d_mfpt",
+      "model": "SAE1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "dae1d_mfpt.json",
+      "experiment_name": "dae1d_mfpt",
+      "model": "DAE1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.5,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.3333,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "cnn1d_mfpt.json",
+      "experiment_name": "cnn1d_mfpt",
+      "model": "CNN1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.9,
+      "std_accuracy": 0.0278,
+      "mean_f1_score": 0.8761,
+      "std_f1_score": 0.0369
+    },
+    {
+      "file": "lenet1d_mfpt.json",
+      "experiment_name": "lenet1d_mfpt",
+      "model": "LeNet1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.919,
+      "std_accuracy": 0.0117,
+      "mean_f1_score": 0.895,
+      "std_f1_score": 0.012
+    },
+    {
+      "file": "resnet18_mfpt.json",
+      "experiment_name": "resnet18_mfpt",
+      "model": "ResNet18",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 1.0,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 1.0,
+      "std_f1_score": 0.0
+    },
+    {
+      "file": "alexnet_mfpt.json",
+      "experiment_name": "alexnet_mfpt",
+      "model": "AlexNet1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.8476,
+      "std_accuracy": 0.019,
+      "mean_f1_score": 0.8083,
+      "std_f1_score": 0.032
+    },
+    {
+      "file": "bilstm_mfpt.json",
+      "experiment_name": "bilstm_mfpt",
+      "model": "BiLSTM",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.9286,
+      "std_accuracy": 0.0,
+      "mean_f1_score": 0.9048,
+      "std_f1_score": 0.0
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "experiment_name": "dae1d_vibration_sequential_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "DAE1D",
+  "description": "1D Denoising AE for vibration signals (Sequential Training) PU",
+  "section": "1D Denoising AutoEncoder",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 32,
+    "results_cell_index": 33
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 50,
+    "pretrain_epochs": 50,
+    "recon_loss_weight": 1.0,
+    "criterion": "classification_criterion",
+    "reconstruction_criterion": "reconstruction_criterion",
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}

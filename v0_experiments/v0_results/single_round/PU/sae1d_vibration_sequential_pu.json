@@ -1,0 +1,28 @@
+{
+  "experiment_name": "sae1d_vibration_sequential_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "SAE1D",
+  "description": "1D Sparse AE for vibration signals (Sequential Training) PU",
+  "section": "1D Sparse AutoEncoder",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 28,
+    "results_cell_index": 29
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 50,
+    "pretrain_epochs": 50,
+    "recon_loss_weight": 1.0,
+    "criterion": "classification_criterion",
+    "reconstruction_criterion": "reconstruction_criterion",
+    "data_fold_idxs": "folds_singleround_deep",
+    "sparsity_target": 0.05,
+    "sparsity_weight": 1.0
+  },
+  "results": {}
+}

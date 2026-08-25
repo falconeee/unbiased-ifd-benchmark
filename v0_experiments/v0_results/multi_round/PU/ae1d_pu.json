@@ -1,0 +1,394 @@
+{
+  "experiment_name": "ae1d_pu",
+  "experiment_name_template": "ae1d_pu_round_{round_idx}",
+  "dataset": "PU",
+  "suite": "multi_round",
+  "protocol": "multi_round",
+  "model": "AE1D",
+  "description": "1D AE PU Multiround",
+  "description_template": "1D AE PU Multiround (Round {round_idx})",
+  "section": "1D AutoEncoder",
+  "status": "not_executed",
+  "source": {
+    "notebook": "multi_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 25,
+    "results_cell_index": null
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 100,
+    "pretrain_epochs": 100,
+    "recon_loss_weight": 1.0,
+    "criterion": "classification_criterion",
+    "reconstruction_criterion": "reconstruction_criterion",
+    "output_dir": "results_multiround_AE1D_PU/round_{round_idx}",
+    "data_fold_idxs": "current_folds"
+  },
+  "results": {},
+  "fold_design": {
+    "total_combinations": 8,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 3
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 6
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 3",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 0",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 2",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 3",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 13
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 0",
+              "I 1",
+              "R 0"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 15
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 1",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 19
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 20
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 23
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 3",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 0",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 1",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "N 0",
+              "O 0",
+              "I 0",
+              "R 3"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "N 1",
+              "O 2",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "N 2",
+              "O 1",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "N 3",
+              "O 3",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 31
+          }
+        ]
+      }
+    ]
+  }
+}

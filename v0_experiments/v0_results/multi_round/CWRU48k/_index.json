@@ -1,0 +1,440 @@
+{
+  "dataset": "CWRU48k",
+  "suite": "multi_round",
+  "source_notebook": "multi_round_experiments/SignalAI_Framework_CWRU48k.ipynb",
+  "num_experiments": 9,
+  "fold_design": {
+    "total_combinations": 8,
+    "rounds": [
+      {
+        "round": 0,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 0
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 1
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 2
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 3
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 1",
+              "R 2"
+            ],
+            "combination_id": 4
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 5
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 6
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 7
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 8
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 9
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 10
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 2",
+              "R 1"
+            ],
+            "combination_id": 11
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 3",
+              "R 1"
+            ],
+            "combination_id": 12
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 13
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 14
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 15
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 1",
+              "R 1"
+            ],
+            "combination_id": 16
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 0",
+              "R 0"
+            ],
+            "combination_id": 17
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 2",
+              "R 3"
+            ],
+            "combination_id": 18
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 3",
+              "R 2"
+            ],
+            "combination_id": 19
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 3",
+              "R 3"
+            ],
+            "combination_id": 20
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 21
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 1",
+              "R 0"
+            ],
+            "combination_id": 22
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 23
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 2",
+              "R 0"
+            ],
+            "combination_id": 24
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 3",
+              "R 1"
+            ],
+            "combination_id": 25
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 26
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 0",
+              "R 2"
+            ],
+            "combination_id": 27
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "folds": [
+          {
+            "fold": 0,
+            "groups": [
+              "O 0",
+              "I 1",
+              "R 3"
+            ],
+            "combination_id": 28
+          },
+          {
+            "fold": 1,
+            "groups": [
+              "O 1",
+              "I 2",
+              "R 2"
+            ],
+            "combination_id": 29
+          },
+          {
+            "fold": 2,
+            "groups": [
+              "O 2",
+              "I 3",
+              "R 0"
+            ],
+            "combination_id": 30
+          },
+          {
+            "fold": 3,
+            "groups": [
+              "O 3",
+              "I 0",
+              "R 1"
+            ],
+            "combination_id": 31
+          }
+        ]
+      }
+    ]
+  },
+  "experiments": [
+    {
+      "file": "mlp1d_48k.json",
+      "experiment_name": "mlp1d_48k",
+      "model": "MLP1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.358,
+      "std_accuracy": 0.0121,
+      "mean_f1_score": 0.2905,
+      "std_f1_score": 0.0101
+    },
+    {
+      "file": "ae1d_vibration.json",
+      "experiment_name": "ae1d_vibration",
+      "model": "AE1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.3497,
+      "std_accuracy": 0.0229,
+      "mean_f1_score": 0.2895,
+      "std_f1_score": 0.0196
+    },
+    {
+      "file": "sae1d_vibration.json",
+      "experiment_name": "sae1d_vibration",
+      "model": "SAE1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.3551,
+      "std_accuracy": 0.0111,
+      "mean_f1_score": 0.3133,
+      "std_f1_score": 0.0172
+    },
+    {
+      "file": "dae1d_vibration.json",
+      "experiment_name": "dae1d_vibration",
+      "model": "DAE1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.3493,
+      "std_accuracy": 0.0201,
+      "mean_f1_score": 0.2795,
+      "std_f1_score": 0.028
+    },
+    {
+      "file": "cnn1d_vibration.json",
+      "experiment_name": "cnn1d_vibration",
+      "model": "CNN1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.8659,
+      "std_accuracy": 0.0172,
+      "mean_f1_score": 0.8704,
+      "std_f1_score": 0.0165
+    },
+    {
+      "file": "lenet1d_vibration.json",
+      "experiment_name": "lenet1d_vibration",
+      "model": "LeNet1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.8107,
+      "std_accuracy": 0.0099,
+      "mean_f1_score": 0.8019,
+      "std_f1_score": 0.0141
+    },
+    {
+      "file": "resnet18_12k.json",
+      "experiment_name": "resnet18_12k",
+      "model": "ResNet18",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.8246,
+      "std_accuracy": 0.0249,
+      "mean_f1_score": 0.8199,
+      "std_f1_score": 0.0238
+    },
+    {
+      "file": "alexnet_12k.json",
+      "experiment_name": "alexnet_12k",
+      "model": "AlexNet1D",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.7125,
+      "std_accuracy": 0.0287,
+      "mean_f1_score": 0.7036,
+      "std_f1_score": 0.0329
+    },
+    {
+      "file": "bilstm_12k.json",
+      "experiment_name": "bilstm_12k",
+      "model": "BiLSTM",
+      "protocol": "multi_round",
+      "status": "executed",
+      "mean_accuracy": 0.8716,
+      "std_accuracy": 0.0204,
+      "mean_f1_score": 0.8623,
+      "std_f1_score": 0.0234
+    }
+  ]
+}
