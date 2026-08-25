@@ -1,9 +1,9 @@
-# Dependencies for scripts/run_experiments.py
+# Dependencies for the benchmark runner (run_experiments.py).
 #
 #   uv venv --no-project
-#   uv pip install -r scripts/requirements.txt
+#   uv pip install -r requirements.txt
 #
-# (or: python3 -m venv .venv && source .venv/bin/activate && pip install -r ...)
+# (or: python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt)
 #
 # vibdata and signalAI are pinned to the versions the notebooks install
 # (`!pip install vibdata==1.1.1 signalAI==0.0.8`).

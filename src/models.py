@@ -1,7 +1,6 @@
 """Model architectures used by the notebook experiments.
 
-Copied verbatim (whitespace normalised) from the notebooks in
-``single_round_experiments/`` and ``multi_round_experiments/``.
+Copied verbatim (whitespace normalised) from the v0 notebooks in ``v0_experiments/``.
 
 The notebooks define per-dataset aliases (``MLP1D_12k``, ``AE1D_12k``, ...) that are
 byte-identical to the base classes apart from indentation, so only the base classes

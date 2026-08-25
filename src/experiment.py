@@ -6,7 +6,7 @@ no autoencoder pre-training phase). It is kept here so the script trains exactly
 notebooks did.
 
 Every deviation from the notebook source is marked with ``# FIX:`` and explained in
-``scripts/README.md``.
+``README.md``.
 """
 
 from __future__ import annotations

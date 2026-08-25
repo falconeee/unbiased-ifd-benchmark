@@ -1,6 +1,6 @@
 """The 108 experiments of the benchmark: 2 suites x 6 datasets x 9 models.
 
-``experiments.json`` was generated from the JSONs under ``output/`` so that experiment
+``experiments.json`` (next to this module) was generated from the JSONs under ``v0_experiments/v0_results/`` so that experiment
 names, descriptions and hyperparameters match the notebooks exactly (they are not uniform:
 ``pretrain_epochs`` is 50 for some datasets and 100 for others, and ``multi_round/PU``
 trains ResNet18 with ``batch_size=128`` for 25 epochs).
@@ -55,7 +55,7 @@ class ExperimentSpec:
 
     @property
     def slug(self) -> str:
-        """File name used under ``results/<suite>/<dataset>/`` (matches ``output/``)."""
+        """File name used under ``results/<suite>/<dataset>/`` (matches the v0 results)."""
         cleaned = re.sub(r"[^\w\-.]+", "_", self.experiment_name.strip())
         return re.sub(r"_+", "_", cleaned).strip("_")
 

@@ -6,8 +6,8 @@ Single round folds come straight from the dataset's ``GroupDataset`` (the same t
 Multi round folds can be obtained two ways:
 
 ``notebook`` (default)
-    Rebuild them from the round x fold design the notebooks printed, which this repo
-    already stores in ``scripts/runner/fold_designs.json``. Instant, and guaranteed to be
+    Rebuild them from the round x fold design the v0 notebooks printed, stored in
+    ``src/fold_designs.json``. Instant, and guaranteed to be
     the same folds the published results were produced with.
 
 ``generate``
