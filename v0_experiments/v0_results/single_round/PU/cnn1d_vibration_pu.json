@@ -1,0 +1,22 @@
+{
+  "experiment_name": "cnn1d_vibration_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "CNN1D",
+  "description": "1D CNN for vibration signals PU",
+  "section": "1D CNN",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 36,
+    "results_cell_index": 37
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 100,
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}

@@ -1,0 +1,107 @@
+{
+  "dataset": "PU",
+  "suite": "single_round",
+  "source_notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+  "num_experiments": 9,
+  "experiments": [
+    {
+      "file": "mlp1d_vibration_pu.json",
+      "experiment_name": "mlp1d_vibration_pu",
+      "model": "MLP1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "ae1d_vibration_combined_loss_pu.json",
+      "experiment_name": "ae1d_vibration_combined_loss_pu",
+      "model": "AE1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "sae1d_vibration_sequential_pu.json",
+      "experiment_name": "sae1d_vibration_sequential_pu",
+      "model": "SAE1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "dae1d_vibration_sequential_pu.json",
+      "experiment_name": "dae1d_vibration_sequential_pu",
+      "model": "DAE1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "cnn1d_vibration_pu.json",
+      "experiment_name": "cnn1d_vibration_pu",
+      "model": "CNN1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "1d_lenet_vibration_pu.json",
+      "experiment_name": "1d_lenet_vibration_pu",
+      "model": "LeNet1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "ResNet18_vibration_pu.json",
+      "experiment_name": "ResNet18_vibration_pu",
+      "model": "ResNet18",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "alexNet_vibration_pu.json",
+      "experiment_name": "alexNet_vibration_pu",
+      "model": "AlexNet1D",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    },
+    {
+      "file": "BiLSTM_vibration_pu.json",
+      "experiment_name": "BiLSTM_vibration_pu",
+      "model": "BiLSTM",
+      "protocol": "single_round",
+      "status": "not_executed",
+      "mean_accuracy": null,
+      "std_accuracy": null,
+      "mean_f1_score": null,
+      "std_f1_score": null
+    }
+  ]
+}

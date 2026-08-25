@@ -1,0 +1,22 @@
+{
+  "experiment_name": "BiLSTM_vibration_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "BiLSTM",
+  "description": "BiLSTM for Raw Vibration (12k points) PU",
+  "section": "1D BiLSTM",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 52,
+    "results_cell_index": 53
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 100,
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}

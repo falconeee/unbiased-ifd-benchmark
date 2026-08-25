@@ -1,0 +1,27 @@
+# Dependencies for scripts/run_experiments.py
+#
+#   uv venv --no-project
+#   uv pip install -r scripts/requirements.txt
+#
+# (or: python3 -m venv .venv && source .venv/bin/activate && pip install -r ...)
+#
+# vibdata and signalAI are pinned to the versions the notebooks install
+# (`!pip install vibdata==1.1.1 signalAI==0.0.8`).
+vibdata==1.1.1
+signalAI==0.0.8
+
+# vibdata calls gdown.cached_download(..., md5=...), which gdown removed in 5.0.
+# Without this pin every raw download fails with
+# "TypeError: download() got an unexpected keyword argument 'md5'".
+gdown<5
+
+# Used by ResamplerIMS (the IMS notebooks import it in the resampling cell).
+imbalanced-learn
+
+torch
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+tqdm

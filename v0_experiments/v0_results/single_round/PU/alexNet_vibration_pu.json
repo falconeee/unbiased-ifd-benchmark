@@ -1,0 +1,22 @@
+{
+  "experiment_name": "alexNet_vibration_pu",
+  "dataset": "PU",
+  "suite": "single_round",
+  "protocol": "single_round",
+  "model": "AlexNet1D",
+  "description": "AlexNet for Raw Vibration (12k points) PU",
+  "section": "1D AlexNet",
+  "status": "not_executed",
+  "source": {
+    "notebook": "single_round_experiments/SignalAI_Framework_PU.ipynb",
+    "run_cell_index": 48,
+    "results_cell_index": 49
+  },
+  "configuration": {
+    "batch_size": 64,
+    "lr": 0.0003,
+    "num_epochs": 100,
+    "data_fold_idxs": "folds_singleround_deep"
+  },
+  "results": {}
+}
