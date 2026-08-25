@@ -1,9 +1,9 @@
-"""Turn ``ExperimentResults`` into the JSON schema used under ``output/``.
+"""Turn ``ExperimentResults`` into the JSON schema used under ``results/``.
 
-The layout mirrors ``output/README.md`` so a freshly run experiment and the one extracted
-from the notebooks can be diffed field by field. Fields the notebooks could not provide --
-every epoch instead of every fifth, per-fold confusion matrices, precision/recall/roc_auc
-per fold, wall times -- are added on top.
+The layout mirrors the archived ``v0_experiments/v0_results/``, so a freshly run experiment
+and the one extracted from the v0 notebooks can be diffed field by field. What the notebooks
+could not provide -- every epoch instead of every fifth, per-fold confusion matrices,
+precision/recall/roc_auc per fold, wall times -- is added on top.
 """
 
 from __future__ import annotations
@@ -190,8 +190,8 @@ def experiment_document(
     doc["section"] = spec.get("section")
     doc["status"] = "executed"
     doc["source"] = OrderedDict(
-        notebook=f"{suite}_experiments/SignalAI_Framework_{dataset}.ipynb",
-        produced_by="scripts/run_experiments.py",
+        notebook=f"v0_experiments/{suite}_experiments/SignalAI_Framework_{dataset}.ipynb",
+        produced_by="run_experiments.py",
     )
     doc["run"] = run_info
     doc["configuration"] = configuration

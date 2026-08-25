@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Run the benchmark experiments from the command line and save one JSON per experiment.
 
-This is the script form of the notebooks in ``single_round_experiments/`` and
-``multi_round_experiments/``: same datasets, same unbiased folds, same nine architectures,
-same hyperparameters. Results land in ``results/<suite>/<DATASET>/<experiment>.json`` using
-the schema documented in ``output/README.md``.
+This is the script form of the v0 notebooks kept in ``v0_experiments/``: same datasets, same
+unbiased folds, same nine architectures, same hyperparameters. Results land in
+``results/<suite>/<DATASET>/<experiment>.json`` using the schema documented in
+``README.md``.
 
 Setup (recommended: uv, from the repository root)
 -------------------------------------------------
     uv venv --no-project
-    uv pip install -r scripts/requirements.txt
+    uv pip install -r requirements.txt
 
 ``uv run --no-project`` then uses ``./.venv`` without activating anything. Drop the prefix if
 you activated the environment yourself.
@@ -17,18 +17,18 @@ you activated the environment yourself.
 Examples
 --------
     # everything, resumable, in the background
-    nohup uv run --no-project python scripts/run_experiments.py \
+    nohup uv run --no-project python run_experiments.py \
         --all --resume --keep-going > run.out 2>&1 &
 
     # one notebook
-    uv run --no-project python scripts/run_experiments.py --suite single_round --dataset CWRU12k
+    uv run --no-project python run_experiments.py --suite single_round --dataset CWRU12k
 
     # one experiment, quick smoke test
-    uv run --no-project python scripts/run_experiments.py --suite single_round --dataset UOC \
+    uv run --no-project python run_experiments.py --suite single_round --dataset UOC \
         --model cnn1d --epochs 2 --max-rounds 1
 
     # what would run
-    uv run --no-project python scripts/run_experiments.py --all --list
+    uv run --no-project python run_experiments.py --all --list
 """
 
 from __future__ import annotations
@@ -49,9 +49,9 @@ from typing import Dict, List, Optional
 # the log with UndefinedMetricWarning on folds where a class is never predicted.
 warnings.filterwarnings("ignore")
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Make ``src`` importable no matter where the script is invoked from.
+sys.path.insert(0, REPO_ROOT)
 
 
 # --------------------------------------------------------------------------- logging
@@ -81,7 +81,7 @@ def log(message: str) -> None:
 
 # ------------------------------------------------------------------------------ CLI
 def build_parser() -> argparse.ArgumentParser:
-    from runner.registry import DATASET_NAMES, MODEL_KEYS, SUITES
+    from src.registry import DATASET_NAMES, MODEL_KEYS, SUITES
 
     parser = argparse.ArgumentParser(
         description=__doc__,
@@ -161,8 +161,8 @@ def run_one_round(spec, cfg, fold_idxs, X, y, input_length, num_classes, args,
     """Build the model and run one full cross validation; returns (results, experiment)."""
     import torch.nn as nn
 
-    from runner.experiment import DeepLearningExperiment, seed_everything
-    from runner.models import build_model
+    from src.experiment import DeepLearningExperiment, seed_everything
+    from src.models import build_model
 
     # The notebooks deep-copy one prototype for every round, so each round starts from the
     # same initial weights; re-seeding before building reproduces that deterministically.
@@ -200,7 +200,7 @@ def run_one_round(spec, cfg, fold_idxs, X, y, input_length, num_classes, args,
 
 def run_experiment(spec, context, args) -> OrderedDict:
     """Run one experiment (all rounds) and return the document to serialise."""
-    from runner import serialize
+    from src import serialize
 
     X, y = context["X"], context["y"]
     input_length, num_classes = context["input_length"], context["num_classes"]
@@ -272,9 +272,9 @@ def notebook_context(suite: str, dataset: str, specs, args) -> Dict:
     """Load the dataset and folds once per notebook, shared by its nine experiments."""
     import numpy as np
 
-    from runner import folds as folds_mod
-    from runner.datasets import DATASETS, load_deep_dataset
-    from runner.experiment import load_xy
+    from src import folds as folds_mod
+    from src.datasets import DATASETS, load_deep_dataset
+    from src.experiment import load_xy
 
     spec0 = specs[0]
     protocol = spec0.protocol
@@ -317,7 +317,7 @@ def rebuild_indices(output_dir: str) -> int:
     """Regenerate ``_index.json`` per notebook and ``index.json`` at the root."""
     import glob
 
-    from runner import serialize
+    from src import serialize
 
     all_rows = []
     for suite_dir in sorted(glob.glob(os.path.join(output_dir, "*"))):
@@ -353,7 +353,7 @@ def rebuild_indices(output_dir: str) -> int:
                 serialize.write_json(
                     os.path.join(ds_dir, "_index.json"),
                     OrderedDict(dataset=dataset, suite=suite,
-                                source_notebook=f"{suite}_experiments/SignalAI_Framework_{dataset}.ipynb",
+                                source_notebook=f"v0_experiments/{suite}_experiments/SignalAI_Framework_{dataset}.ipynb",
                                 num_experiments=len(rows), experiments=rows),
                 )
     if all_rows:
@@ -391,7 +391,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    from runner.registry import DATASET_NAMES, MODEL_KEYS, SUITES, select
+    from src.registry import DATASET_NAMES, MODEL_KEYS, SUITES, select
 
     suites = tuple(args.suite) if args.suite else SUITES
     datasets = tuple(args.dataset) if args.dataset else DATASET_NAMES
@@ -421,7 +421,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     import torch
 
-    from runner import serialize
+    from src import serialize
 
     device = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
     args.device = device

@@ -6,7 +6,7 @@ sample rate, and then assign every sample to a group with a dataset-specific
 :class:`~signalAI.utils.group_dataset.GroupDataset` subclass.
 
 Differences from the notebooks are marked with ``# FIX:`` and listed in
-``scripts/README.md``.
+``README.md``.
 """
 
 from __future__ import annotations
