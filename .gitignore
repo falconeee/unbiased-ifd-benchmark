@@ -212,3 +212,6 @@ data/
 # Loss curves and model checkpoints written during a run.
 results/_artifacts/
 results/run.log
+
+CLAUDE.md
+article/
