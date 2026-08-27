@@ -10,15 +10,6 @@ a recording it already memorised.
 Nine 1D deep-learning architectures across six public datasets, in two protocols —
 **108 experiments** in total.
 
-```bash
-uv venv --no-project
-source .venv/bin/activate
-uv pip install -r requirements.txt
-python run_experiments.py --all --resume --keep-going
-```
-
----
-
 ## Findings
 
 Mean test accuracy over the unbiased folds. Numbers come from the first round of experiments,
