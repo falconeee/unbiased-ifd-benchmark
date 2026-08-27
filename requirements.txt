@@ -25,3 +25,8 @@ scikit-learn
 matplotlib
 seaborn
 tqdm
+
+# Statistics for the ablation report (run_experiments_ablation.py --report): Wilcoxon,
+# Page's trend test and Spearman. Already pulled in by scikit-learn, pinned here because
+# ablation/report.py imports it directly.
+scipy

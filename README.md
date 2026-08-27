@@ -87,19 +87,33 @@ for every experiment are in the JSON files described under [Results](#results).
 ## Layout
 
 ```
-run_experiments.py     the entry point: selection, orchestration, logging, result files
-src/                   everything it calls
-├── registry.py        the 108 experiments (+ experiments.json)
-├── datasets.py        the 6 datasets: download, transform, grouping, resampling
-├── folds.py           unbiased folds, single and multi round (+ fold_designs.json)
-├── models.py          the 9 architectures
-├── experiment.py      DeepLearningExperiment: cross validation and training loop
-└── serialize.py       results -> JSON
-results/               output of a run (created on first run)
-data/                  raw downloads and converted datasets (git-ignored)
-v0_experiments/        archived first version: the original notebooks and their results
+run_experiments.py           entry point: the 108 benchmark experiments
+run_experiments_ablation.py  entry point: the 21 ablation experiments (see Ablations)
+
+src/                         the benchmark, shared by both entry points
+├── registry.py              the 108 experiments (+ experiments.json)
+├── datasets.py              the 6 datasets: download, transform, grouping, resampling
+├── folds.py                 unbiased folds, single and multi round (+ fold_designs.json)
+├── models.py                the 9 architectures
+├── experiment.py            DeepLearningExperiment: cross validation and training loop
+└── serialize.py             results -> JSON
+
+ablation/                    only what the ablations add on top of src/
+├── models.py                parametric CNN1D: depth and initial kernel as arguments
+├── registry.py              the 21 ablation experiments + their JSON document
+└── report.py                ablation results -> tables and significance tests
+
+results/                     output of a benchmark run (created on first run)
+results_ablation/            output of an ablation run (created on first run)
+data/                        raw downloads and converted datasets (git-ignored)
+review/                      reviewer comments driving the ablations
+paper/                       the manuscript
+v0_experiments/              archived first version: the original notebooks and their results
 requirements.txt
 ```
+
+`ablation/` reuses `src/` untouched — same datasets, same folds, same training loop, same
+result serialisation — so ablation numbers are directly comparable with the published ones.
 
 The benchmark started as twelve Colab notebooks, archived unchanged in `v0_experiments/`.
 `run_experiments.py` is their script form: same datasets, same folds, same architectures, same
@@ -146,53 +160,127 @@ Validated on Python 3.12 with torch 2.12 and 2.13, on CPU.
 
 ## Run
 
+There are two entry points. They share the same flag vocabulary and the same result schema:
+
+| Script | Runs | Writes to |
+|---|---|---|
+| `run_experiments.py` | the 108 benchmark experiments | `results/` |
+| `run_experiments_ablation.py` | the 21 ablation experiments | `results_ablation/` |
+
+Both read and write the same `data/` directory, so a dataset downloaded by one is reused by
+the other. This section documents the benchmark runner; the ablation runner has its own
+section under [Ablations](#ablations).
+
 With the environment activated:
 
 ```bash
-# everything (108 experiments), resumable
 python run_experiments.py --all --resume --keep-going
-
-# leave it going in the background
-nohup python run_experiments.py --all --resume --keep-going > run.out 2>&1 &
-
-# one dataset, one protocol
-python run_experiments.py --suite single_round --dataset CWRU12k
-
-# one experiment, smoke test
-python run_experiments.py --suite single_round --dataset UOC \
-    --model cnn1d --epochs 2 --max-rounds 1
-
-# what would run, without running it
-python run_experiments.py --all --list
 ```
 
 `uv run --no-project python run_experiments.py ...` works too, and uses `./.venv` without
 activating anything.
 
-`--suite`, `--dataset` and `--model` are repeatable and combine as a filter. Raw datasets are
-downloaded on first use into `data/` and converted once per dataset, so the first run of a
-given dataset is slower than the rest.
+### Choosing what runs
+
+Three selection filters, all repeatable. Passing a filter more than once *widens* the
+selection along that dimension; different filters *narrow* each other:
+
+| Filter | Accepted values |
+|---|---|
+| `--suite` | `single_round`, `multi_round` |
+| `--dataset` | `CWRU12k`, `CWRU48k`, `IMS`, `MFPT`, `PU`, `UOC` |
+| `--model` | `mlp1d`, `ae1d`, `sae1d`, `dae1d`, `cnn1d`, `lenet1d`, `resnet18`, `alexnet`, `bilstm` |
+
+Passing no filter is the same as `--all`. `--list` prints the resulting selection and exits
+without training — always worth running first:
+
+```bash
+# 108 rows: everything
+python run_experiments.py --all --list
+
+# 18 rows: two models, every dataset, both protocols
+python run_experiments.py --model resnet18 --model alexnet --list
+```
+
+### Commands you will actually use
+
+```bash
+# The full grid, resumable and fault-tolerant. This is the main command.
+#   --resume     skips experiments whose result JSON already exists
+#   --keep-going carries on to the next experiment when one raises
+python run_experiments.py --all --resume --keep-going
+
+# The same thing detached, keeping a transcript. Results are written per experiment,
+# so you can tail run.out or results/run.log and stop it at any point.
+nohup python run_experiments.py --all --resume --keep-going > run.out 2>&1 &
+
+# One notebook's worth of work: nine models on one dataset under one protocol.
+# The dataset is loaded and converted once and shared by all nine.
+python run_experiments.py --suite single_round --dataset CWRU12k
+
+# A single experiment, cut down so it finishes in seconds. Use this to check the
+# environment before committing to a long run; the overrides are recorded in the
+# result JSON under run.overrides so a smoke result is never mistaken for a real one.
+python run_experiments.py --suite single_round --dataset UOC \
+    --model cnn1d --epochs 2 --max-rounds 1
+
+# Fill in only what is missing after an interrupted run, without re-reading anything.
+python run_experiments.py --all --resume --no-download
+```
+
+Raw datasets are downloaded on first use into `data/` and converted once per dataset, so the
+first run touching a given dataset is much slower than the rest.
 
 ### Flags
 
+**Selection**
+
 | Flag | Default | Notes |
 |---|---|---|
-| `--suite`, `--dataset`, `--model` | all | repeatable selection filters |
-| `--list` | — | print the selection and exit |
+| `--all` | — | run everything; same as passing no filter |
+| `--suite`, `--dataset`, `--model` | all | repeatable selection filters (see above) |
+| `--list` | off | print the selection and exit without training |
+
+**Paths**
+
+| Flag | Default | Notes |
+|---|---|---|
 | `--data-root` | `data/` | raw downloads, converted datasets, group/fold caches |
-| `--output-dir` | `results/` | result JSONs, `run.log`, `run_manifest.json`, `_artifacts/` |
-| `--resume` | off | skip experiments whose JSON already exists |
-| `--keep-going` | off | carry on when one experiment raises |
-| `--device` | `cuda` if available | |
-| `--seed` | `42` | seeds python/numpy/torch and the validation split |
-| `--folds-source` | `notebook` | see [Fold design](#fold-design) |
-| `--no-artifacts` | off | skip per-fold loss curves and `.pt` checkpoints |
+| `--output-dir` | `results/` | result JSONs, `index.json`, `run_manifest.json` |
+| `--artifacts-dir` | `<output-dir>/_artifacts` | per-fold loss curves and `.pt` checkpoints |
+| `--log-file` | `<output-dir>/run.log` | full transcript, appended |
 | `--no-download` | off | fail instead of downloading a missing dataset |
-| `--epochs`, `--pretrain-epochs`, `--batch-size`, `--max-rounds` | — | overrides for smoke tests; recorded in the JSON under `run.overrides` |
+
+**Execution**
+
+| Flag | Default | Notes |
+|---|---|---|
+| `--device` | `cuda` if available | any torch device string |
+| `--seed` | `42` | seeds python/numpy/torch, the validation split and the weight init |
+| `--resume` | off | skip experiments whose result JSON already exists |
+| `--keep-going` | off | carry on when one experiment raises; failures land in `run_manifest.json` |
+| `--no-artifacts` | off | skip loss curves and checkpoints (much less disk) |
+| `--folds-source` | `notebook` | `notebook` rebuilds the folds from the recorded design; `generate` runs the real combination search — see [Fold design](#fold-design) |
+
+**Overrides** — for smoke tests only. Each one is recorded in the result JSON under
+`run.overrides`, so a shortened run is always identifiable.
+
+| Flag | Overrides |
+|---|---|
+| `--epochs` | `num_epochs` |
+| `--pretrain-epochs` | `pretrain_epochs` (autoencoders only) |
+| `--batch-size` | `batch_size` |
+| `--max-rounds` | number of rounds executed in a multiround experiment |
+
+### Resuming, logs and failures
 
 Progress goes to stdout **and** to `<output-dir>/run.log`, so a backgrounded run keeps a full
-transcript. Re-running with `--resume` picks up where it stopped — including after a crash or
-a `Ctrl-C`, since results are written per experiment, not at the end.
+transcript. Results are written per experiment, not at the end, so `--resume` picks up exactly
+where it stopped — including after a crash or a `Ctrl-C`. Every run also writes
+`run_manifest.json` listing what was executed, skipped and failed, plus the exact command,
+seed, device and package versions.
+
+The exit code is `1` if any experiment failed, `0` otherwise.
 
 ## Results
 
@@ -233,6 +321,169 @@ Two things to know when reading a number: per-fold `accuracy` is `balanced_accur
 while the pooled "overall accuracy" of the confusion matrix is the raw one, so the two differ;
 and there is no early stopping or checkpoint selection — the model tested is the one from the
 last epoch.
+
+---
+
+## Ablations
+
+`run_experiments_ablation.py` answers Reviewer #2's two objections (`review/reviwers_comments.md`):
+that the AlexNet vs. ResNet-18 comparison cannot isolate depth, because the two differ in
+kernels, receptive fields, pooling, parameter count and skip connections at once; and that the
+receptive-field explanation was never tested. Both are answered by varying **one** axis at a
+time on the paper's own 1D-CNN.
+
+### The grid
+
+Variants are named `d<depth>_k<first kernel>`. Every kernel after the first is 3, channel
+widths are 16→32→64→128→256, and padding, BatchNorm, pooling strategy, dropout and the
+classification head are identical throughout.
+
+| Arm | Comment | Variants |
+|---|---|---|
+| depth | R2.2 | `d1_k3`, `d2_k3`, **`d3_k3`**, `d5_k3` |
+| receptive field | R2.3 | **`d3_k3`**, `d3_k7`, `d3_k11`, `d3_k64` |
+
+`d3_k3` belongs to both arms, so the grid is 7 distinct variants, not 8 — it is trained once
+and reported in both tables. 7 variants × 3 datasets (PU, CWRU12k, CWRU48k) = **21 experiments**,
+each 8 rounds × 4 folds = 672 fold trainings. `d3_k3` is `src/models.py`'s `CNN1D` with its
+7-5-3 kernel schedule flattened to 3-3-3; block structure is otherwise identical, including the
+`AdaptiveMaxPool1d(16)` that replaces the last block's `MaxPool1d(2)`.
+
+The two arms differ in how cleanly they isolate their axis, and the result JSON records enough
+to say so in the manuscript:
+
+| Variant | Depth | First kernel | Params | Receptive field |
+|---|---|---|---|---|
+| `d1_k3` | 1 | 3 | 33,508 | 3 |
+| `d2_k3` | 2 | 3 | 67,908 | 8 |
+| `d3_k3` | 3 | 3 | 139,780 | 18 |
+| `d5_k3` | 5 | 3 | 657,028 | 78 |
+| `d3_k7` | 3 | 7 | 139,844 | 22 |
+| `d3_k11` | 3 | 11 | 139,908 | 26 |
+| `d3_k64` | 3 | 64 | 140,756 | 79 |
+
+The receptive-field arm is close to a clean manipulation: kernel 3 → 64 moves the receptive
+field 4.4× while parameter count changes by 0.7%. The depth arm is not, and cannot be — adding
+a block adds its weights and widens the flattened head, so parameters grow 20× across it.
+That confound is inherent to the design the response letter proposes; it is measured
+(`architecture.num_parameters`) rather than hidden, and `d5_k3` vs `d3_k64` gives a useful
+cross-arm reading: near-identical receptive field (78 vs 79), 4.7× the parameters.
+
+### Training protocol
+
+Identical to the published 1D-CNN row on each dataset — same unbiased multiround folds, Adam,
+lr 3e-4, batch 64, 100 epochs — and the same `DeepLearningExperiment` training loop, so a 20%
+validation split used only for logging and **no early stopping**. Note this differs from
+Section 2.2 of the manuscript, which describes a 10% split with early stopping; the benchmark
+code has never done that, and the ablation follows the code so its numbers stay comparable
+with Table 4. Both facts are recorded in every result JSON under `configuration.val_split`,
+`configuration.early_stopping` and `notes.protocol`.
+
+### Selecting variants
+
+Same idea as the benchmark runner, with `--model` replaced by two filters:
+
+| Filter | Accepted values | Notes |
+|---|---|---|
+| `--dataset` | `PU`, `CWRU12k`, `CWRU48k` | repeatable |
+| `--variant` | `d1_k3`, `d2_k3`, `d3_k3`, `d5_k3`, `d3_k7`, `d3_k11`, `d3_k64` | repeatable |
+| `--study` | `depth`, `kernel` | selects a whole arm; **either arm includes the shared `d3_k3` cell** |
+
+`--variant` and `--study` intersect, so `--study depth --variant d5_k3` runs just `d5_k3`.
+Passing neither runs all seven.
+
+### Commands
+
+```bash
+# The full grid: 21 experiments, 672 fold trainings. This is the main command.
+python run_experiments_ablation.py --all --resume --keep-going
+
+# Detached, with a transcript, for the long run.
+nohup python run_experiments_ablation.py --all --resume --keep-going > run_ablation.out 2>&1 &
+
+# Check the selection before spending compute. Prints dataset, variant, arm, depth
+# and first kernel for each experiment, then exits.
+python run_experiments_ablation.py --all --list
+
+# Only the dataset the reviewer's objection is actually about (7 experiments).
+# Start here if you want an answer before the full grid finishes.
+python run_experiments_ablation.py --dataset PU
+
+# One arm on one dataset (4 experiments, including the shared d3_k3 cell):
+python run_experiments_ablation.py --dataset PU --study depth     # R2.2
+python run_experiments_ablation.py --dataset PU --study kernel    # R2.3
+
+# Smoke test: one variant, 2 epochs, 1 round. Finishes in seconds and proves the
+# pipeline works end to end; the overrides are recorded in run.overrides.
+python run_experiments_ablation.py --dataset CWRU12k --variant d1_k3 \
+    --epochs 2 --max-rounds 1
+
+# Rebuild report.md / report.tex / report.json from results already on disk,
+# without training anything. Safe to run at any time, including mid-run.
+python run_experiments_ablation.py --report
+```
+
+### Flags that differ
+
+Everything from the benchmark runner's [Flags](#flags) applies unchanged — `--data-root`,
+`--output-dir`, `--artifacts-dir`, `--log-file`, `--no-download`, `--device`, `--seed`,
+`--resume`, `--keep-going`, `--no-artifacts`, `--folds-source`, `--epochs`, `--batch-size`,
+`--max-rounds` — with two differences and one addition:
+
+| Flag | Default | Notes |
+|---|---|---|
+| `--output-dir` | `results_ablation/` | not `results/`; keep them apart |
+| `--epochs`, `--batch-size`, `--max-rounds` | — | the only overrides; there is no `--pretrain-epochs` because no ablation variant pre-trains |
+| `--report` | off | rebuild the report from `--output-dir` and exit without training |
+
+`--data-root` defaults to the same `data/` as the benchmark, so nothing is downloaded twice.
+
+### Output
+
+`results_ablation/` mirrors `results/` one level flatter (no suite directory), with an extra
+top-level `architecture` block per experiment and `study`/`variant` fields:
+
+```
+results_ablation/
+├── index.json                               every variant, one row each, with params and RF
+├── run_manifest.json                        what this run did: args, env, failures
+├── run.log
+├── report.md                                tables + significance tests, for reading
+├── report.tex                               the same tables as booktabs, for the manuscript
+├── report.json                              the same numbers, machine readable
+├── _artifacts/<DATASET>/<experiment>/       loss curves + model checkpoints
+└── <DATASET>/
+    ├── _index.json
+    └── <experiment_name>.json
+```
+
+Each experiment JSON is the benchmark schema plus:
+
+| Key | Contents |
+|---|---|
+| `study`, `variant` | which arm the variant belongs to (`depth`, `kernel` or `both`) and its name |
+| `source` | the review comment it answers (`R2.2`, `R2.3`) and the baseline experiment to compare against |
+| `architecture` | depth, kernels and channels per block, parameter counts (total, conv, head), theoretical receptive field in samples and seconds, flattened feature size |
+| `configuration` | adds `optimizer`, `loss`, `val_split`, `early_stopping`, `checkpoint_selection` |
+| `notes` | why the protocol and block structure are what they are |
+
+### Reading the report
+
+The report is regenerated at the end of every run, and by `--report` alone. Per dataset and
+per arm it gives:
+
+- **Mean ± std** of Balanced Accuracy and Macro F1, under *both* dispersion conventions — std
+  over all 32 per-fold scores (what Table 4's caption claims) and std over the 8 round means
+  (what `results.summary` stores) — because the two differ and the manuscript is ambiguous.
+- **Adjacent paired Wilcoxon** tests between neighbouring variants, paired by `(round, fold)`
+  and Holm-corrected within the arm. Pairing is legitimate because every variant sees the
+  identical fold assignment with the identical seed.
+- **Page's trend test** across the whole arm, run in both directions — this is the test that
+  actually addresses "monotonic in depth", which adjacent pairwise tests do not.
+- **Spearman ρ** against depth or kernel size, for effect direction and magnitude.
+
+`report.tex` contains the same tables as `booktabs` environments with `\label{tab:ablation_<arm>_<dataset>}`,
+ready to paste into the manuscript.
 
 ---
 
