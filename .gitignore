@@ -218,3 +218,5 @@ results_ablation/_artifacts/
 results_ablation/run.log
 
 CLAUDE.md
+
+.claude/
