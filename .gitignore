@@ -213,5 +213,8 @@ data/
 results/_artifacts/
 results/run.log
 
+# Ablation runner (run_experiments_ablation.py) -- result JSONs and report are tracked.
+results_ablation/_artifacts/
+results_ablation/run.log
+
 CLAUDE.md
-article/
