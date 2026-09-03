@@ -246,7 +246,7 @@ first run touching a given dataset is much slower than the rest.
 
 | Flag | Default | Notes |
 |---|---|---|
-| `--device` | `cuda` if available | any torch device string |
+| `--device` | auto-detected | `cuda`, `cuda:N`, `mps` or `cpu` — see [Devices](#devices) |
 | `--seed` | `42` | seeds python/numpy/torch, the validation split and the weight init |
 | `--resume` | off | skip experiments whose result JSON already exists |
 | `--keep-going` | off | carry on when one experiment raises; failures land in `run_manifest.json` |
@@ -262,6 +262,31 @@ first run touching a given dataset is much slower than the rest.
 | `--pretrain-epochs` | `pretrain_epochs` (autoencoders only) |
 | `--batch-size` | `batch_size` |
 | `--max-rounds` | number of rounds executed in a multiround experiment |
+
+### Devices
+
+Both runners detect the training device on startup and pick the fastest backend torch can
+actually use, preferring **CUDA → MPS → CPU**. The choice, and what else was available, is
+logged and recorded in every result JSON under `run.environment`:
+
+```
+[2026-08-27 22:26:14] device: mps auto-detected -- Apple Silicon GPU (Metal Performance
+                      Shaders) (also available: cpu)
+```
+
+Override with `--device cuda`, `--device cuda:1`, `--device mps` or `--device cpu`. A request
+the machine cannot satisfy fails immediately with a clear message instead of dying inside the
+first fold:
+
+```
+--device 'cuda': torch reports no usable 'cuda' backend on this machine. Available: mps, cpu.
+```
+
+Two things to know about **MPS** (Apple Silicon): results can differ marginally from CPU or
+CUDA because the Metal kernels are not bit-identical — this is normal for any accelerator
+change and does not affect conclusions; and if an unsupported operator ever aborts a run,
+relaunch with `PYTORCH_ENABLE_MPS_FALLBACK=1` set, which routes those ops to the CPU. Every
+architecture in this repository has been checked to train on MPS without a fallback.
 
 ### Resuming, logs and failures
 
@@ -370,6 +395,36 @@ code has never done that, and the ablation follows the code so its numbers stay 
 with Table 4. Both facts are recorded in every result JSON under `configuration.val_split`,
 `configuration.early_stopping` and `notes.protocol`.
 
+### Cost
+
+The full grid is 21 experiments × 8 rounds × 4 folds × 100 epochs = **672 fold trainings**.
+Measured per-step cost of each variant at each dataset's real input length, extrapolated over
+the fold sizes the protocol produces (Apple M-series, 10 CPU cores, torch 2.13):
+
+| | CWRU12k | CWRU48k | PU | Total |
+|---|---|---|---|---|
+| **MPS** | 8.6 h | 8.6 h | 64 h | **≈81 h (3.4 days)** |
+| **CPU** | 87 h | 97 h | 719 h | ≈903 h (38 days) |
+
+PU dominates — it is both the largest dataset and the longest input (64,000 samples per
+window against 12,000 for CWRU12k), and it is also the dataset the reviewer's objection is
+actually about. Running `--dataset PU` alone is ≈64 h; either single arm on PU
+(`--dataset PU --study depth`) is ≈35 h. Both CWRU datasets together are under 18 h, so
+`--dataset CWRU12k --dataset CWRU48k` is a cheap way to see the trend before committing to PU.
+
+Per variant, cost tracks depth almost linearly: `d1_k3` is ≈3.5 h total against ≈22 h for
+`d5_k3`. Kernel size costs little on GPU (`d3_k64` ≈14 h vs `d3_k3` ≈11 h).
+
+A CUDA GPU is roughly 2–3× faster than MPS here — the epoch times recorded in
+`v0_experiments/v0_results/` for the original Colab runs are 2.1–2.9× below this machine's
+MPS times for the equivalent architecture — which would put the full grid near **30 h**.
+Plain CPU is not a practical option for the whole grid.
+
+Two caveats on these numbers. They assume the datasets are already downloaded and converted
+(first use of each adds download and one-off conversion time), and PU's sample count is not
+recorded in the archived results, so it was derived from the v0 epoch timings; at ±30% on
+that count the total moves between 2.6 and 4.1 days on MPS.
+
 ### Selecting variants
 
 Same idea as the benchmark runner, with `--model` replaced by two filters:
@@ -426,6 +481,9 @@ Everything from the benchmark runner's [Flags](#flags) applies unchanged — `--
 | `--output-dir` | `results_ablation/` | not `results/`; keep them apart |
 | `--epochs`, `--batch-size`, `--max-rounds` | — | the only overrides; there is no `--pretrain-epochs` because no ablation variant pre-trains |
 | `--report` | off | rebuild the report from `--output-dir` and exit without training |
+
+Device detection is identical to the benchmark runner — CUDA, then MPS, then CPU; see
+[Devices](#devices).
 
 `--data-root` defaults to the same `data/` as the benchmark, so nothing is downloaded twice.
 

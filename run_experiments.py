@@ -79,6 +79,64 @@ def log(message: str) -> None:
     print(f"[{stamp}] {message}", flush=True)
 
 
+# --------------------------------------------------------------------------- device
+def available_devices() -> "OrderedDict[str, str]":
+    """Backends torch can actually use here, in descending order of preference.
+
+    ``cpu`` is always present, so the mapping is never empty.
+    """
+    import torch
+
+    found: "OrderedDict[str, str]" = OrderedDict()
+    if torch.cuda.is_available():
+        found["cuda"] = f"{torch.cuda.get_device_name(0)} (x{torch.cuda.device_count()})"
+    mps = getattr(torch.backends, "mps", None)
+    if mps is not None and mps.is_available():
+        found["mps"] = "Apple Silicon GPU (Metal Performance Shaders)"
+    found["cpu"] = platform.processor() or platform.machine() or "cpu"
+    return found
+
+
+def resolve_device(requested: Optional[str]) -> str:
+    """Return the torch device string to train on.
+
+    Without ``--device``, picks the fastest backend available: ``cuda``, then ``mps``, then
+    ``cpu``. With ``--device``, validates the request and fails immediately rather than
+    letting the run die inside the first fold.
+    """
+    import torch
+
+    found = available_devices()
+
+    if not requested:
+        chosen = next(iter(found))
+        others = ", ".join(k for k in found if k != chosen) or "none"
+        log(f"device: {chosen} auto-detected -- {found[chosen]} (also available: {others})")
+        if chosen == "mps":
+            log("      MPS note: results may differ marginally from CPU/CUDA (different "
+                "kernels). Set PYTORCH_ENABLE_MPS_FALLBACK=1 before launching if an "
+                "unsupported op aborts a run.")
+        elif chosen == "cpu":
+            log("      no GPU backend found; a full run on CPU takes considerably longer")
+        return chosen
+
+    kind = requested.split(":")[0]
+    if kind not in found:
+        raise SystemExit(
+            f"--device {requested!r}: torch reports no usable {kind!r} backend on this "
+            f"machine. Available: {', '.join(found)}."
+        )
+    if kind == "cuda" and ":" in requested:
+        index = int(requested.split(":", 1)[1])
+        if index >= torch.cuda.device_count():
+            raise SystemExit(
+                f"--device {requested!r}: only {torch.cuda.device_count()} CUDA device(s) "
+                f"visible (valid indices 0..{torch.cuda.device_count() - 1})."
+            )
+    log(f"device: {requested} requested -- {found[kind]}")
+    return requested
+
+
 # ------------------------------------------------------------------------------ CLI
 def build_parser() -> argparse.ArgumentParser:
     from src.registry import DATASET_NAMES, MODEL_KEYS, SUITES
@@ -113,7 +171,9 @@ def build_parser() -> argparse.ArgumentParser:
                        help="do not download raw datasets (they must already be present)")
 
     run = parser.add_argument_group("execution")
-    run.add_argument("--device", default=None, help="torch device (default: cuda if available)")
+    run.add_argument("--device", default=None,
+                     help="torch device: cuda, cuda:N, mps or cpu "
+                          "(default: auto-detect, preferring cuda, then mps, then cpu)")
     run.add_argument("--seed", type=int, default=42, help="random seed (default: %(default)s)")
     run.add_argument("--resume", action="store_true",
                      help="skip experiments whose result JSON already exists")
@@ -381,8 +441,14 @@ def environment_info(device: str) -> OrderedDict:
         except Exception:  # noqa: BLE001
             info[package] = "unknown"
     info["device"] = device
+    info["devices_available"] = list(available_devices())
     if device.startswith("cuda") and torch.cuda.is_available():
-        info["gpu"] = torch.cuda.get_device_name(0)
+        info["accelerator"] = torch.cuda.get_device_name(0)
+        info["gpu"] = info["accelerator"]  # kept: earlier result files use this key
+        info["cuda"] = torch.version.cuda
+    elif device.startswith("mps"):
+        info["accelerator"] = "Apple Silicon GPU (MPS)"
+        info["gpu"] = info["accelerator"]
     return info
 
 
@@ -419,11 +485,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     sys.stdout = tee_out
     sys.stderr = Tee(sys.stderr, args.log_file)
 
-    import torch
-
     from src import serialize
 
-    device = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
+    device = resolve_device(args.device)
     args.device = device
     run_started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     environment = environment_info(device)
