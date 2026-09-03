@@ -124,7 +124,14 @@ class DeepLearningExperiment:
         self.criterion = criterion if criterion is not None else nn.CrossEntropyLoss()
 
         if device is None:
-            device = "cuda" if torch.cuda.is_available() else "cpu"
+            # Both runners resolve the device up front and pass it in; this fallback only
+            # fires when the class is used directly. Same preference order they use.
+            if torch.cuda.is_available():
+                device = "cuda"
+            elif getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available():
+                device = "mps"
+            else:
+                device = "cpu"
         self.device = device
 
         self.reconstruction_criterion = reconstruction_criterion

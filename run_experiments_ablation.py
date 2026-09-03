@@ -21,7 +21,7 @@ count and theoretical receptive field per variant.
 Setup (same environment as the main benchmark)
 ----------------------------------------------
     uv venv --no-project
-    uv pip install -r requirements.txt
+    uv pip install -r requirements.tx
 
 Examples
 --------
@@ -67,7 +67,7 @@ sys.path.insert(0, REPO_ROOT)
 
 # Logging, the tee and the environment probe are identical to the main runner; importing
 # them keeps the two scripts from drifting apart.
-from run_experiments import Tee, environment_info, log  # noqa: E402
+from run_experiments import Tee, environment_info, log, resolve_device  # noqa: E402
 
 
 # ------------------------------------------------------------------------------ CLI
@@ -108,7 +108,9 @@ def build_parser() -> argparse.ArgumentParser:
                        help="do not download raw datasets (they must already be present)")
 
     run = parser.add_argument_group("execution")
-    run.add_argument("--device", default=None, help="torch device (default: cuda if available)")
+    run.add_argument("--device", default=None,
+                     help="torch device: cuda, cuda:N, mps or cpu "
+                          "(default: auto-detect, preferring cuda, then mps, then cpu)")
     run.add_argument("--seed", type=int, default=42, help="random seed (default: %(default)s)")
     run.add_argument("--resume", action="store_true",
                      help="skip variants whose result JSON already exists")
@@ -406,11 +408,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     sys.stdout = Tee(sys.stdout, args.log_file)
     sys.stderr = Tee(sys.stderr, args.log_file)
 
-    import torch
-
     from src import serialize
 
-    device = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
+    device = resolve_device(args.device)
     args.device = device
     run_started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     environment = environment_info(device)
