@@ -1,49 +1,61 @@
 #!/usr/bin/env python3
-"""Run the controlled CNN1D ablations requested by Reviewer #2 and save one JSON per variant.
+"""Run the controlled ablations requested by Reviewer #2 and save one JSON per variant.
 
 Reviewer #2 objects that the AlexNet vs. ResNet-18 comparison cannot isolate depth, because
 the two architectures differ along several axes at once, and that the receptive-field
-explanation is untested. This script answers both with a single parametric family built on
-the paper's own 1D-CNN (``ablation/models.py``):
+explanation is untested. This script answers both by varying one axis at a time inside
+three model families (``ablation/models.py``), each run through the same two arms:
 
-    R2.2  depth arm    depth in (1, 2, 3, 5), every kernel fixed at 3
-    R2.3  kernel arm   first kernel in (3, 7, 11, 64), depth fixed at 3
+    R2.2  depth arm    depth varies, first kernel fixed
+    R2.3  kernel arm   first kernel in (3, 7, 11, 64), depth fixed
 
-``d3_k3`` belongs to both arms, so the grid is 7 variants x 3 datasets (PU, CWRU12k,
-CWRU48k) = 21 experiments, each 8 rounds x 4 folds = 672 fold trainings.
+    --model    depth arm (first kernel)        kernel arm (depth)   shared cell
+    cnn1d      1, 2, 3, 5 conv blocks (k=3)    3                    d3_k3
+    alexnet    1, 2, 3, 5 conv layers (k=11)   5                    d5_k11 = published AlexNet
+    resnet18   ResNet-10/18/26/34 (k=7)        18                   d18_k7 = published ResNet-18
 
-Everything else matches the published 1D-CNN row of Table 4 -- same unbiased multiround
-folds, Adam, lr 3e-4, batch 64, 100 epochs, and the benchmark's own training loop, which
-means a 20% validation split used only for logging and **no early stopping**. Results use
-the schema of ``run_experiments.py`` plus an ``architecture`` block recording parameter
-count and theoretical receptive field per variant.
+The shared cell belongs to both arms, so each family has 7 variants; 3 families x 7 variants
+x 3 datasets (PU, CWRU12k, CWRU48k) = 63 experiments, each 8 rounds x 4 folds.
+
+Everything else matches each family's published row of Table 4 -- same unbiased multiround
+folds, Adam, and the batch size / lr / epochs of that row in ``src/experiments.json``
+(64 / 3e-4 / 100, except ResNet-18 on PU: 128 / 3e-4 / 25) -- and the benchmark's own
+training loop, which means a 20% validation split used only for logging and **no early
+stopping**. Results use the schema of ``run_experiments.py`` plus an ``architecture`` block
+recording parameter count and theoretical receptive field per variant.
 
 Setup (same environment as the main benchmark)
 ----------------------------------------------
     uv venv --no-project
-    uv pip install -r requirements.tx
+    uv pip install -r requirements.txt
 
 Examples
 --------
+    # depth arm of AlexNet and ResNet-18 only (24 experiments; the 1D-CNN is not touched)
+    python run_experiments_ablation.py --model alexnet --model resnet18 --study depth --list
+    python run_experiments_ablation.py --model alexnet --model resnet18 --study depth \
+        --resume --keep-going
+
+    # the same, one model and one dataset at a time
+    python run_experiments_ablation.py --model alexnet --study depth --dataset PU --resume
+    python run_experiments_ablation.py --model resnet18 --study depth --dataset PU --resume
+
     # everything, resumable, in the background
-    nohup uv run --no-project python run_experiments_ablation.py \
-        --all --resume --keep-going > run_ablation.out 2>&1 &
+    nohup python run_experiments_ablation.py --all --resume --keep-going \
+        > run_ablation.out 2>&1 &
 
-    # the dataset the reviewer asked about
-    uv run --no-project python run_experiments_ablation.py --dataset PU
-
-    # one arm only (includes the shared d3_k3 cell)
-    uv run --no-project python run_experiments_ablation.py --dataset PU --study depth
+    # one arm of one model (includes that model's shared cell)
+    python run_experiments_ablation.py --model alexnet --study kernel --resume
 
     # quick smoke test
-    uv run --no-project python run_experiments_ablation.py --dataset CWRU12k \
-        --variant d1_k3 --epochs 2 --max-rounds 1
+    python run_experiments_ablation.py --dataset CWRU12k --model alexnet \
+        --variant d1_k11 --epochs 2 --max-rounds 1
 
     # what would run
-    uv run --no-project python run_experiments_ablation.py --all --list
+    python run_experiments_ablation.py --all --list
 
     # rebuild the tables and statistics from results already on disk
-    uv run --no-project python run_experiments_ablation.py --report
+    python run_experiments_ablation.py --report
 """
 
 from __future__ import annotations
@@ -72,7 +84,7 @@ from run_experiments import Tee, environment_info, log, resolve_device  # noqa: 
 
 # ------------------------------------------------------------------------------ CLI
 def build_parser() -> argparse.ArgumentParser:
-    from ablation.registry import DATASET_NAMES, STUDIES, VARIANT_KEYS
+    from ablation.registry import DATASET_NAMES, FAMILY_KEYS, STUDIES, VARIANT_KEYS
 
     parser = argparse.ArgumentParser(
         description=__doc__,
@@ -80,14 +92,17 @@ def build_parser() -> argparse.ArgumentParser:
     )
     sel = parser.add_argument_group("selection")
     sel.add_argument("--all", action="store_true",
-                     help="run every dataset and variant (same as passing no filter)")
+                     help="run every model, dataset and variant (same as passing no filter)")
+    sel.add_argument("--model", action="append", choices=FAMILY_KEYS,
+                     help="restrict to a model family (repeatable)")
     sel.add_argument("--dataset", action="append", choices=DATASET_NAMES,
                      help="restrict to a dataset (repeatable)")
     sel.add_argument("--variant", action="append", choices=VARIANT_KEYS,
-                     help="restrict to a variant, e.g. d3_k11 (repeatable)")
+                     help="restrict to a variant, e.g. d3_k11 (repeatable); a key can exist "
+                          "in more than one model, so combine with --model")
     sel.add_argument("--study", action="append", choices=STUDIES,
-                     help="restrict to an ablation arm; either arm includes the shared "
-                          "d3_k3 cell (repeatable)")
+                     help="restrict to an ablation arm; either arm includes the model's "
+                          "shared cell (repeatable)")
     sel.add_argument("--list", action="store_true", help="print the selection and exit")
 
     paths = parser.add_argument_group("paths")
@@ -152,7 +167,7 @@ def experiment_configuration(spec, input_length: int, num_classes: int, args) ->
     cfg["optimizer"] = "Adam"
     cfg["loss"] = "CrossEntropyLoss"
     # Pinned explicitly rather than left to the DeepLearningExperiment default, so the
-    # protocol is legible from the JSON alone (see ablation.registry.PROTOCOL_NOTE).
+    # protocol is legible from the JSON alone (see ablation.registry.protocol_note).
     cfg["val_split"] = VAL_SPLIT
     cfg["early_stopping"] = False
     cfg["checkpoint_selection"] = False
@@ -162,9 +177,10 @@ def experiment_configuration(spec, input_length: int, num_classes: int, args) ->
 
 
 def build_variant(spec, input_length: int, num_classes: int):
-    from ablation.models import AblationCNN1D
+    from ablation.models import build_ablation_model
 
-    return AblationCNN1D(
+    return build_ablation_model(
+        spec.family,
         input_length=input_length,
         num_classes=num_classes,
         depth=spec.depth,
@@ -217,7 +233,8 @@ def run_experiment(spec, context, args) -> OrderedDict:
     architecture = architecture_block(
         build_variant(spec, input_length, num_classes), input_length
     )
-    log(f"    depth={architecture['depth']} kernels={architecture['kernels_per_block']} "
+    log(f"    model={spec.family} depth={architecture['depth']} "
+        f"first_kernel={architecture['first_kernel']} "
         f"params={architecture['num_parameters']:,} "
         f"receptive_field={architecture['receptive_field_samples']} samples")
 
@@ -270,7 +287,7 @@ def run_experiment(spec, context, args) -> OrderedDict:
 
 
 def dataset_context(dataset: str, args) -> Dict:
-    """Load the dataset and its multiround folds once, shared by all of its variants."""
+    """Load the dataset and its multiround folds once, shared by every variant of every model."""
     import numpy as np
 
     from src import folds as folds_mod
@@ -308,6 +325,7 @@ def dataset_context(dataset: str, args) -> Dict:
 # ----------------------------------------------------------------------- reporting
 def rebuild_indices(output_dir: str) -> int:
     """Regenerate ``_index.json`` per dataset and ``index.json`` at the root."""
+    from ablation.registry import document_family
     from src import serialize
 
     all_rows = []
@@ -326,6 +344,7 @@ def rebuild_indices(output_dir: str) -> int:
             rows.append(OrderedDict(
                 file=os.path.basename(path),
                 experiment_name=doc.get("experiment_name"),
+                family=document_family(doc),
                 variant=doc.get("variant"),
                 study=doc.get("study"),
                 depth=architecture.get("depth"),
@@ -342,8 +361,9 @@ def rebuild_indices(output_dir: str) -> int:
         if rows:
             serialize.write_json(
                 os.path.join(ds_dir, "_index.json"),
-                OrderedDict(dataset=dataset, suite="cnn1d_ablation",
+                OrderedDict(dataset=dataset, suite="ablation",
                             source="review/reviwers_comments.md (R2.2, R2.3)",
+                            families=sorted({row["family"] for row in rows if row["family"]}),
                             num_experiments=len(rows), experiments=rows),
             )
     if all_rows:
@@ -378,22 +398,25 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    from ablation.registry import DATASET_NAMES, VARIANT_KEYS, select
+    from ablation.registry import DATASET_NAMES, FAMILY_KEYS, VARIANT_KEYS, select
 
     if args.report:
         return 0 if write_report(args.output_dir) else 1
 
+    families = tuple(args.model) if args.model else FAMILY_KEYS
     datasets = tuple(args.dataset) if args.dataset else DATASET_NAMES
     variants = tuple(args.variant) if args.variant else VARIANT_KEYS
     studies = tuple(args.study) if args.study else None
-    selection = list(select(datasets, variants, studies))
+    selection = list(select(datasets, variants, studies, families))
 
     if args.list:
         print(f"{len(selection)} experiment(s) selected\n")
-        print(f"{'dataset':<9}{'variant':<9}{'study':<7}{'depth':<7}{'k1':<5}experiment")
+        print(f"{'dataset':<9}{'model':<10}{'variant':<9}{'study':<7}{'depth':<7}{'k1':<5}"
+              f"{'batch':<7}{'epochs':<8}experiment")
         for spec in selection:
-            print(f"{spec.dataset:<9}{spec.key:<9}{spec.study:<7}{spec.depth:<7}"
-                  f"{spec.first_kernel:<5}{spec.experiment_name}")
+            print(f"{spec.dataset:<9}{spec.family:<10}{spec.key:<9}{spec.study:<7}"
+                  f"{spec.depth:<7}{spec.first_kernel:<5}{spec.batch_size:<7}"
+                  f"{spec.num_epochs:<8}{spec.experiment_name}")
         return 0
 
     if not selection:
@@ -439,7 +462,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                        if not os.path.exists(os.path.join(target_dir, s.slug + ".json"))]
             for spec in specs:
                 if spec not in pending:
-                    skipped.append(f"{dataset}/{spec.key}")
+                    skipped.append(f"{dataset}/{spec.family}/{spec.key}")
         if not pending:
             log(f"{dataset}: nothing to do (all results present)")
             continue
@@ -450,7 +473,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         except Exception as exc:  # noqa: BLE001
             log(f"!! {dataset}: failed to prepare dataset/folds: {exc}")
             traceback.print_exc()
-            failed.extend(f"{dataset}/{s.key}" for s in pending)
+            failed.extend(f"{dataset}/{s.family}/{s.key}" for s in pending)
             if args.keep_going:
                 continue
             return 1
@@ -461,14 +484,14 @@ def main(argv: Optional[List[str]] = None) -> int:
 
         os.makedirs(target_dir, exist_ok=True)
         for spec in pending:
-            label = f"{dataset}/{spec.key} ({spec.experiment_name})"
+            label = f"{dataset}/{spec.family}/{spec.key} ({spec.experiment_name})"
             log(f"--- {label}")
             try:
                 document = run_experiment(spec, context, args)
             except Exception as exc:  # noqa: BLE001
                 log(f"!! {label} failed: {exc}")
                 traceback.print_exc()
-                failed.append(f"{dataset}/{spec.key}")
+                failed.append(f"{dataset}/{spec.family}/{spec.key}")
                 if args.keep_going:
                     continue
                 return 1
@@ -477,7 +500,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             summary = document["results"].get("summary", {})
             log(f"    saved {os.path.relpath(path, REPO_ROOT)} | "
                 f"acc={summary.get('mean_accuracy')} f1={summary.get('mean_f1_score')}")
-            done.append(f"{dataset}/{spec.key}")
+            done.append(f"{dataset}/{spec.family}/{spec.key}")
 
     total = rebuild_indices(args.output_dir)
     manifest = OrderedDict(
