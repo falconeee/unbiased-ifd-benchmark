@@ -100,7 +100,8 @@ data/                        raw downloads and converted datasets (git-ignored)
 review/                      reviewer comments driving the ablations
 paper/                       the manuscript
 v0_experiments/              archived first version: the original notebooks and their results
-requirements.txt
+pyproject.toml               dependencies (managed with uv)
+uv.lock                      exact versions of every package
 ```
 
 `ablation/` reuses `src/` untouched — same datasets, same folds, same training loop, same
@@ -124,24 +125,12 @@ the rest takes seconds instead of minutes. From the repository root:
 # If you don't have uv installed
 pip install uv
 
-# Create the virtual environment (the repo has no pyproject.toml, hence --no-project)
-uv venv --no-project
+# Create .venv with the locked dependencies (pyproject.toml + uv.lock)
+uv sync
 
 # Activate the virtual environment
 source .venv/bin/activate  # or `.venv\Scripts\activate` on Windows
-
-# Install project requirements using uv and requirements.txt
-uv pip install -r requirements.txt
 ```
-
-<details>
-<summary>Without uv</summary>
-
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-```
-</details>
 
 `gdown<5` is not optional: `vibdata==1.1.1` calls `gdown.cached_download(..., md5=...)`, and
 gdown 5 removed that argument, so every raw download fails with
@@ -168,7 +157,7 @@ With the environment activated:
 python run_experiments.py --all --resume --keep-going
 ```
 
-`uv run --no-project python run_experiments.py ...` works too, and uses `./.venv` without
+`uv run python run_experiments.py ...` works too, and uses `./.venv` without
 activating anything.
 
 ### Choosing what runs

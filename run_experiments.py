@@ -8,27 +8,26 @@ unbiased folds, same nine architectures, same hyperparameters. Results land in
 
 Setup (recommended: uv, from the repository root)
 -------------------------------------------------
-    uv venv --no-project
-    uv pip install -r requirements.txt
+    uv sync
 
-``uv run --no-project`` then uses ``./.venv`` without activating anything. Drop the prefix if
+``uv run`` then uses ``./.venv`` without activating anything. Drop the prefix if
 you activated the environment yourself.
 
 Examples
 --------
     # everything, resumable, in the background
-    nohup uv run --no-project python run_experiments.py \
+    nohup uv run python run_experiments.py \
         --all --resume --keep-going > run.out 2>&1 &
 
     # one notebook
-    uv run --no-project python run_experiments.py --suite single_round --dataset CWRU12k
+    uv run python run_experiments.py --suite single_round --dataset CWRU12k
 
     # one experiment, quick smoke test
-    uv run --no-project python run_experiments.py --suite single_round --dataset UOC \
+    uv run python run_experiments.py --suite single_round --dataset UOC \
         --model cnn1d --epochs 2 --max-rounds 1
 
     # what would run
-    uv run --no-project python run_experiments.py --all --list
+    uv run python run_experiments.py --all --list
 """
 
 from __future__ import annotations
