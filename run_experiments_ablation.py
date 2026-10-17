@@ -26,8 +26,7 @@ recording parameter count and theoretical receptive field per variant.
 
 Setup (same environment as the main benchmark)
 ----------------------------------------------
-    uv venv --no-project
-    uv pip install -r requirements.txt
+    uv sync
 
 Examples
 --------

@@ -1,0 +1,29 @@
+[project]
+name = "unbiased-ifd-benchmark"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # vibdata calls gdown.cached_download(..., md5=...), which gdown removed in 5.0.
+    # Without this pin every raw download fails with
+    # "TypeError: download() got an unexpected keyword argument 'md5'".
+    "gdown<5",
+    # Used by ResamplerIMS (the IMS notebooks import it in the resampling cell).
+    "imbalanced-learn>=0.14.2",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pandas>=3.0.6",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.18.1",
+    "seaborn>=0.13.2",
+    # vibdata and signalAI are pinned to the versions the notebooks install
+    # (`!pip install vibdata==1.1.1 signalAI==0.0.8`).
+    "signalai==0.0.8",
+    "torch>=2.14.1",
+    "tqdm>=4.70.1",
+    "vibdata==1.1.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+]
