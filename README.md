@@ -80,6 +80,7 @@ for every experiment are in the JSON files described under [Results](#results).
 ```
 run_experiments.py           entry point: the 108 benchmark experiments
 run_experiments_ablation.py  entry point: the 63 ablation experiments (see Ablations)
+colab_ablation.ipynb         runs the pending ablations on Google Colab, instructions in its header
 
 src/                         the benchmark, shared by both entry points
 ├── registry.py              the 108 experiments (+ experiments.json)
@@ -492,6 +493,29 @@ python run_experiments_ablation.py --report
 - **Where to run it.** ResNet-18 needs a CUDA GPU, and on PU one with about 40 GB of memory
   for ResNet-26/34. AlexNet also runs on a Mac but takes about 12 days for the three datasets.
   Details under Cost.
+
+### Running on Google Colab
+
+`colab_ablation.ipynb` completes the 63-experiment grid, depth arms first, skipping any
+experiment whose JSON is already in `ifd_ablation/results_ablation` on Drive. The results
+tracked in this repository are copied there automatically; upload any others before training.
+Its header holds the step-by-step instructions. Upload it to Colab
+(File > Upload notebook); it clones this repository's `main` branch by itself, so anything it
+should run has to be pushed first.
+
+The flow is two "Run all" passes. The first, on a CPU runtime, downloads and converts the
+datasets once and stores them on Google Drive as `ifd_ablation/dados_ablacao.tar`. The second,
+on an A100 40 GB, tests ResNet-34 on PU once, which is the largest memory case, and then trains. Results
+go straight to `ifd_ablation/results_ablation` on Drive. When a session ends, reconnect and
+"Run all" again: `--resume` carries on, and only the experiment in progress is lost. When
+everything finishes the notebook flushes Drive and releases the runtime, so it stops consuming
+compute units.
+
+The A100 is the one machine that can run the whole grid without switching: an L4 cannot hold
+ResNet-26/34 on PU. Estimated use is about 410 compute units and 75 h, up to 585 units with a 25%
+margin. Those numbers infer the A100's speed on CWRU from the archived runs, so check the
+time per epoch in the first session. Checkpoints are off (`--no-artifacts`) because they would
+add more than 20 GB to Drive.
 
 ### Cost
 
