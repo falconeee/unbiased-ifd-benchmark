@@ -220,3 +220,4 @@ results_ablation/run.log
 CLAUDE.md
 
 .claude/
+.DS_Store
