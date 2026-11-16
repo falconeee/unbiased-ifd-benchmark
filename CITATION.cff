@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below."
+title: "unbiased-ifd-benchmark"
+type: software
+authors:
+  - family-names: Falcone
+    given-names: Gabriel
+repository-code: "https://github.com/falconeee/unbiased-ifd-benchmark"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Depth Is Not a Reliable Predictor of Generalization: A Similarity-Bias-Free Reassessment of Deep Learning for Vibration-Based Fault Diagnosis"
+  # TODO after publication: list every author of the paper, and fill in year, volume, article number and DOI.
+  authors:
+    - family-names: Falcone
+      given-names: Gabriel
+  journal: "Knowledge-Based Systems"
+  year: 2026
+  doi: "10.0000/PLACEHOLDER"
