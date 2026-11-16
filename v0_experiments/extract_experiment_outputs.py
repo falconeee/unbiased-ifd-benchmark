@@ -3,8 +3,9 @@
 import json, re, os, glob, sys
 from collections import OrderedDict
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "output")
+# Notebooks live next to this script; stored notebook paths are relative to this folder.
+ROOT = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(os.path.dirname(ROOT), "results", "benchmark")
 
 # ------------------------------------------------------------------ helpers
 def cell_text(cell):

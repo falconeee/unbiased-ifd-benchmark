@@ -1,6 +1,6 @@
-"""Turn ``ExperimentResults`` into the JSON schema used under ``results/``.
+"""Turn ``ExperimentResults`` into the JSON schema used under ``runs/`` and ``results/``.
 
-The layout mirrors the archived ``v0_experiments/v0_results/``, so a freshly run experiment
+The layout mirrors the archived ``results/benchmark/``, so a freshly run experiment
 and the one extracted from the v0 notebooks can be diffed field by field. What the notebooks
 could not provide -- every epoch instead of every fifth, per-fold confusion matrices,
 precision/recall/roc_auc per fold, wall times -- is added on top.

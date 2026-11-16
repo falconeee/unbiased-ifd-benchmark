@@ -109,7 +109,7 @@ def build_parser() -> argparse.ArgumentParser:
                        help="where raw/converted datasets and fold caches live -- share this "
                             "with run_experiments.py to avoid re-downloading "
                             "(default: %(default)s)")
-    paths.add_argument("--output-dir", default=os.path.join(REPO_ROOT, "results_ablation"),
+    paths.add_argument("--output-dir", default=os.path.join(REPO_ROOT, "results", "ablation"),
                        help="where the result JSONs and the report are written "
                             "(default: %(default)s)")
     paths.add_argument("--artifacts-dir", default=None,
@@ -361,7 +361,7 @@ def rebuild_indices(output_dir: str) -> int:
             serialize.write_json(
                 os.path.join(ds_dir, "_index.json"),
                 OrderedDict(dataset=dataset, suite="ablation",
-                            source="review/reviwers_comments.md (R2.2, R2.3)",
+                            source="Reviewer #2, comments R2.2 and R2.3",
                             families=sorted({row["family"] for row in rows if row["family"]}),
                             num_experiments=len(rows), experiments=rows),
             )

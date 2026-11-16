@@ -3,8 +3,9 @@
 
 This is the script form of the v0 notebooks kept in ``v0_experiments/``: same datasets, same
 unbiased folds, same nine architectures, same hyperparameters. Results land in
-``results/<suite>/<DATASET>/<experiment>.json`` using the schema documented in
-``README.md``.
+``runs/benchmark/<suite>/<DATASET>/<experiment>.json`` (git-ignored) using the schema
+documented in ``README.md``; the archived notebook results behind the paper are in
+``results/benchmark/``.
 
 Setup (recommended: uv, from the repository root)
 -------------------------------------------------
@@ -158,7 +159,7 @@ def build_parser() -> argparse.ArgumentParser:
     paths = parser.add_argument_group("paths")
     paths.add_argument("--data-root", default=os.path.join(REPO_ROOT, "data"),
                        help="where raw/converted datasets and fold caches live (default: %(default)s)")
-    paths.add_argument("--output-dir", default=os.path.join(REPO_ROOT, "results"),
+    paths.add_argument("--output-dir", default=os.path.join(REPO_ROOT, "runs", "benchmark"),
                        help="where the result JSONs are written (default: %(default)s)")
     paths.add_argument("--artifacts-dir", default=None,
                        help="where per-fold loss curves and checkpoints go "

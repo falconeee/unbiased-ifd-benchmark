@@ -209,13 +209,14 @@ __marimo__/
 # Benchmark runner (run_experiments.py)
 # Raw downloads, converted DeepDatasets and group/fold caches -- gigabytes, all rebuildable.
 data/
-# Loss curves and model checkpoints written during a run.
-results/_artifacts/
-results/run.log
+# Output of fresh benchmark runs (the archived results behind the paper are in results/benchmark/).
+runs/
 
-# Ablation runner (run_experiments_ablation.py) -- result JSONs and report are tracked.
-results_ablation/_artifacts/
-results_ablation/run.log
+# Ablation runner (run_experiments_ablation.py) writes to results/ablation/ -- result JSONs and
+# report are tracked; loss curves, checkpoints and the transcript are not.
+results/ablation/_artifacts/
+results/ablation/run.log
+results/ablation/run_manifest.json
 
 CLAUDE.md
 

@@ -17,10 +17,9 @@ things are computed per dataset, per model family and per arm:
 ``Spearman``
     Effect direction and magnitude over the pooled per-fold scores.
 
-Both dispersion conventions are reported side by side because they differ and the manuscript
-is ambiguous about which it uses: ``fold`` (std over all 32 per-fold scores, what Table 4's
-caption claims) and ``round`` (std over the 8 round means, what ``results.summary`` in the
-result JSONs stores).
+Both dispersion conventions are reported side by side because they differ: ``fold`` (std
+over all 32 per-fold scores) and ``round`` (std over the 8 round means, what
+``results.summary`` in the result JSONs stores and what the paper's tables report).
 
 Each dataset section opens with a cross-model summary -- one row per family and arm, with the
 per-level means and the trend statistics -- which is the table that answers whether a trend
@@ -412,9 +411,9 @@ def render_markdown(report: OrderedDict) -> str:
     lines: List[str] = [
         "# Ablations -- depth (R2.2) and receptive field (R2.3)",
         "",
-        "Values are percentages, `mean ± std` over **all per-fold scores** (the convention "
-        "Table 4's caption states). `std over rounds` is the alternative convention stored "
-        "in `results.summary` of each JSON, shown for transparency.",
+        "Values are percentages, `mean ± std` over **all per-fold scores**. `std over rounds` "
+        "is the convention stored in `results.summary` of each JSON and used in the "
+        "paper's Tables 4 and 5.",
         "",
         "`Balanced Accuracy` is `balanced_accuracy_score`; `Macro F1` is `f1_score(average='macro')`.",
         "",

@@ -1,4 +1,4 @@
-"""Controlled ablations answering Reviewer #2 (``review/reviwers_comments.md``).
+"""Controlled ablations answering Reviewer #2 (comments R2.2 and R2.3).
 
 ``run_experiments_ablation.py`` at the repository root is the entry point; everything it
 needs beyond the shared benchmark code in ``src/`` lives here:

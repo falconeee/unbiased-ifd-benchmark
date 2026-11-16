@@ -406,7 +406,7 @@ def ablation_document(
     doc["status"] = "executed"
     doc["source"] = OrderedDict(
         review_comment=spec.review_comment,
-        review_file="review/reviwers_comments.md",
+        review_file="Reviewer #2 report (not distributed)",
         baseline_experiment=spec.baseline_experiment,
         produced_by="run_experiments_ablation.py",
     )

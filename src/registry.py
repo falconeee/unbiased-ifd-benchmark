@@ -1,6 +1,6 @@
 """The 108 experiments of the benchmark: 2 suites x 6 datasets x 9 models.
 
-``experiments.json`` (next to this module) was generated from the JSONs under ``v0_experiments/v0_results/`` so that experiment
+``experiments.json`` (next to this module) was generated from the JSONs under ``results/benchmark/`` so that experiment
 names, descriptions and hyperparameters match the notebooks exactly (they are not uniform:
 ``pretrain_epochs`` is 50 for some datasets and 100 for others, and ``multi_round/PU``
 trains ResNet18 with ``batch_size=128`` for 25 epochs).

@@ -1,6 +1,6 @@
 # Ablations -- depth (R2.2) and receptive field (R2.3)
 
-Values are percentages, `mean ± std` over **all per-fold scores** (the convention Table 4's caption states). `std over rounds` is the alternative convention stored in `results.summary` of each JSON, shown for transparency.
+Values are percentages, `mean ± std` over **all per-fold scores**. `std over rounds` is the convention stored in `results.summary` of each JSON and used in the paper's Tables 4 and 5.
 
 `Balanced Accuracy` is `balanced_accuracy_score`; `Macro F1` is `f1_score(average='macro')`.
 
